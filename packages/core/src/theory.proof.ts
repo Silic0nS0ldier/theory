@@ -18,11 +18,16 @@ export const t2 = theory()
 
 
 export const t3 = theory()
+.test((t, scenario) => {
+    
+});
+
+export const t4 = theory()
 .test(t => {
 
 });
 
-export const t4 = theory()
+export const t5 = theory()
 .scenario({ foo: "bar" })
 .test((t, scenario) => {
     
