@@ -10,6 +10,7 @@
         "sourceMap": true,
         "importHelpers": false,
         "strict": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "declaration": true
     }
 }

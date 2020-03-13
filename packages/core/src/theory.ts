@@ -2,7 +2,7 @@ interface ITestFunction<TScenarios> {
     (t: any, scenario: TScenarios): Promise<void>|void;
 }
 
-interface ITheory<TScenarios> {
+export interface ITheory<TScenarios> {
     /**
      * Adds an optional description to the theory. This will be included in certain reports.
      * @param description Description to append to theory.
@@ -29,7 +29,7 @@ interface ITheory<TScenarios> {
     test(fn: ITestFunction<TScenarios>): void;
 }
 
-class Theory<TScenarios> implements ITheory<TScenarios> {
+export class Theory<TScenarios> implements ITheory<TScenarios> {
     describe(description: string): this {
         throw new Error("Method not implemented.");
     }
@@ -46,10 +46,10 @@ class Theory<TScenarios> implements ITheory<TScenarios> {
 }
 
 /**
- * Starts a theory.
+ * A theory spark bound to a configuration.
  */
-export function theory(): ITheory<undefined> {
-    return new Theory<undefined>();
+export interface ITheorySpark {
+    (): ITheory<undefined>;
 }
 
 interface Result {
