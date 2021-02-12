@@ -1,6 +1,6 @@
 import { integrationTheory } from "../../theory";
 
-export const t1 = integrationTheory()
+export const shouldDoTheThing = integrationTheory()
 .test(t => {
 
 });
