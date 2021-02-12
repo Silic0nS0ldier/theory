@@ -1,9 +1,11 @@
 import { unitTheory } from "../theory";
 
 export const t1 = unitTheory()
-.scenario(["a"])
-.scenario([])
-.scenario([1])
+.scenarios({
+    s1: ["a"],
+    s2: [],
+    s3: [1],
+})
 .test((t, scenario) => {
 
 });
