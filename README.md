@@ -57,3 +57,5 @@ Test validation should occur, but error reporting logic should be loaded only wh
 Support multiple configurations to permit more advanced scenarios. Would mean higher complexity around running tests (i.e. no "run all" command) but would make specialised scenarios such as selenium much easier to achieve.
 
 Support deep plugin integrations such that selenium testing can be covered.
+
+Differentiate between failures. e.g. "assertion failed but ran to completion" vs. "exception thrown". May help guide dev mindset sooner, speed up development loop.

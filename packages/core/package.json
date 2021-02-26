@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "description": "Core API for Theory test framework.",
   "type": "module",
-  "exports": {
-    ".": "./dist/main.js"
-  },
+  "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "typescript": "^4.2.2"
   }
 }
