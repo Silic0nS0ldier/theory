@@ -1,5 +1,3 @@
-import { TheoryResult } from "./theory";
-
 export interface Agent {
     /**
      * Refresh loaded tests. Called by runner when changes are detected.
@@ -14,7 +12,7 @@ export interface Agent {
      * @param theoryId Unique identifier for a theory.
      * @param scenario Optional number that correlates the scenario which should be tested.
      */
-    run(fileId: string, theoryId: string, scenario?: number): Promise<TheoryResult>;
+    run(fileId: string, theoryId: string, scenario?: number): Promise<unknown>;
 
     /**
      * Instructs agent to dispose of its resources. Once called, the agent will no longer be used.

@@ -1,3 +1,8 @@
 # Theory Core
 
-Responsible for bringing everything together, primarily through common interfaces and (most importantly) powering the configuration system that backs the entire test framework.
+Brings everything together with as small an API surface as possible. The core contributes framework primatives that most everything depends on.
+
+```
+node_modules/.bin/tsc
+node_modules/.bin/ava
+```

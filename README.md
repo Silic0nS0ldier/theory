@@ -7,11 +7,12 @@ Theory is an in-development multi target test framework built to ease developmen
 * 🤏 Low boilerplate
 * 🐙 Easy testing of multiple targets (NodeJS, Deno, Chrome, Firefox, Safari, Edge, IE, Fitbit OS, Electron, VSCode extension host, WebView components, etc)
 * 🌏 Capacity to test against traditionally difficult to reach targets (e.g. Fitbit OS, remote browser, AWS Lambda)
-* ➰Highly flexible
-* 🛠 Highly extensible
+* ➰ Highly flexible
+* 🧱 Highly extensible
+* 📈 Highly scalable
 * ⏩ High performance
 * 🐜 Extremely lightweight
-* 🖇 Easy to integrate with existing workflows
+* 🧩 Easy to integrate with existing workflows
 
 ## Inspiration
 
@@ -36,26 +37,30 @@ Work on principle of test agents (current runtime, Chromium, VS Code, etc). Agen
 
 Support execution order and isolation mixing, where tests can be run within fresh environments (at performance expense) and run in different orders to assist in flushing out bugs that otherwise would go unnoticed.
 
-Important that watcher scenarios are considered. Will almost definitely need to restart runner to test changes, so start time needs to be as fast as possible. Test discovery may require a separate process to avoid breaks and spec compliance.
+Important that watcher scenarios are considered. We can never be confident code is 100% pure (no side effects) so environment needs to be scrubbed between runs. Worthwhile in future adding opt-in agent reuse. Test discovery needs to occur in a separate process to isolate errors, minimise damage should a dependency contain malware (runner will need file system and potentially network access, so a lot of damage could be done), and simplify the overall implementation (no code reload hacks needed).
 
-Optional analytics. Include in config for default boilerplates. Features;
-* Monitoring performance of test runners, use to direct performance efforts across ecosystem.
-* Identify tangible changes across releases and issues
-* Divide collected data down to;
-  * Commit hash (if possible)
-  * Environment
-  * Test system version
+Opt-in analytics. Handy for;
+* Profiling upstream dependencies against a large sample set.
+* Identifying framework breakages across releases, and quicker issue detection.
 
-Choas enginnering? Support would need to make testing common pitfalls easy, and have at most moderate difficulty for custom scenarios.
+Useful data includes;
+* Commit hash (if possible)
+* Environment
+* Test system version
 
-Would be nice to make each test file an alias for running that particular test file. How would configuration be discovered?
+Certain test agents are likely to take a long time to spin up, shouldn't hold up execution of tests on faster agents.
 
-Some test agents will always take longer. Should be able to show available results before completion.
+Support specifying a configuration.
 
-Test validation should occur, but error reporting logic should be loaded only when required to keep start ups fast. Core error reporting logic needs to be generic citing that presentation is up to the integration to handle.
+Differentiate between failure types. e.g. failed vs. error thrown.
 
-Support multiple configurations to permit more advanced scenarios. Would mean higher complexity around running tests (i.e. no "run all" command) but would make specialised scenarios such as selenium much easier to achieve.
+## Future Scope
 
-Support deep plugin integrations such that selenium testing can be covered.
+* Chaos engineering, implemented via a plugin. Good way to prove framework extensibility. Good way to help people catch common pitfalls more easily.
 
-Differentiate between failures. e.g. "assertion failed but ran to completion" vs. "exception thrown". May help guide dev mindset sooner, speed up development loop.
+* Test file as execution alias. Running the file via a supported runtime should test it as though runner was triggered with a single file.
+  Consideration for how the configuration is discovered is needed however. Further, what about projects with build steps?
+
+* First-class multi-config support.
+  Should be possible to run everything with 1 command and no performance hit.
+  Would necessitate a new process for each config to guard against side effects.
