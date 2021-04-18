@@ -1,7 +1,7 @@
 {
-  "name": "@theory/core",
+  "name": "@theory/assertions",
   "version": "0.1.0",
-  "description": "Core API for Theory test framework.",
+  "description": "Assertions for Theory test framework.",
   "type": "module",
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",

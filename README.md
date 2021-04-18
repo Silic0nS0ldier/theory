@@ -45,6 +45,7 @@ Opt-in analytics. Handy for;
 
 Useful data includes;
 * Commit hash (if possible)
+  * Might be interesting to explore identifiction of a commit that has caused a failure for CI settings.
 * Environment
 * Test system version
 
@@ -52,7 +53,15 @@ Certain test agents are likely to take a long time to spin up, shouldn't hold up
 
 Support specifying a configuration.
 
-Differentiate between failure types. e.g. failed vs. error thrown.
+Differentiate between failure types. e.g.;
+* Assertion failure
+  * Similarity between expected and unexpected values
+* Error thrown
+  * Runtime error (e.g. syntax error)
+  * Error from imported library (tricky to implement)
+  * Error defined by code being tested.
+
+A lot of the usability enhancements come with a perfromance cost. Start time needs to be kept minimal, so ideally enhancements can be applied after tests have run (as much as is possible).
 
 ## Future Scope
 

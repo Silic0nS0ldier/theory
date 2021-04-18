@@ -1,4 +1,0 @@
-// Configuration
-export interface ITheoryConfig {
-
-}

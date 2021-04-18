@@ -1,6 +1,0 @@
-{
-    "private": true,
-    "devDependencies": {
-        "@thory/core": "../../packages/core"
-    }
-}
