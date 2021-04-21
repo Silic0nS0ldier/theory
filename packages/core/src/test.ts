@@ -1,3 +1,5 @@
+import { FileSystemContract } from "./contracts/fs.js";
+
 export type TestMeta = Map<Symbol, unknown>;
 
 export type TestContext = {
@@ -8,6 +10,10 @@ export type TestContext = {
     // approach should consider fs mocking
     // some targets won't have fs access, should raise error
     // ideally error produced on attempting to access fs logic (less places to check)
+    readonly internal: {
+        readonly fs: FileSystemContract,
+    },
+    readonly fs: FileSystemContract,
 };
 
 export type TestFn = (t: TestContext) => void;

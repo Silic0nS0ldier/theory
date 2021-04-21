@@ -63,6 +63,8 @@ Differentiate between failure types. e.g.;
 
 A lot of the usability enhancements come with a perfromance cost. Start time needs to be kept minimal, so ideally enhancements can be applied after tests have run (as much as is possible).
 
+Mistakes happen, particularly where async/await and callbacks are concerned. Should make it as easy as possible (and at the very least possible) to trace rouge promises and callbacks that are continuing after the test has terminated.
+
 ## Future Scope
 
 * Chaos engineering, implemented via a plugin. Good way to prove framework extensibility. Good way to help people catch common pitfalls more easily.
