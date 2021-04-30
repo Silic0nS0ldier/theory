@@ -7,5 +7,10 @@ import { TestContext } from "@theory/core";
  * @param actual 
  */
 export function snapshot(t: TestContext, actual: unknown) {
-
+    // Render actual into snapshot format
+    // Try read existing snapshot
+    // If exists
+        // Compare, throw assertion error on missing
+    // Else
+        // If not in update mode, throw
 }

@@ -8,7 +8,7 @@ import { AssertionError } from "./assertion-error.js";
  * @param actual 
  */
 export function is(expected: unknown, actual: unknown) {
-    if (expected === actual) {
+    if (Object.is(expected, actual)) {
         return;
     }
 

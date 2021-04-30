@@ -1,3 +1,9 @@
+# Assertions
+
+Assertions built with speed, correctness, and determinism in mind.
+
+
+---
 
 
 npm true-equals

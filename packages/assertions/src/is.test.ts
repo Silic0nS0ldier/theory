@@ -17,3 +17,11 @@ test("Value type not equal", t => {
 test("Reference type not equal", t => {
     t.throws(() => is({}, {}));
 });
+
+test("Plus and minus zero not equal", t => {
+    t.throws(() => is(+0, -0));
+})
+
+test("NaN are equal", t => {
+    t.notThrows(() => is(NaN, NaN));
+})
