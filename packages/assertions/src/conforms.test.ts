@@ -16,7 +16,18 @@ test("Basic object", t => {
     });
 });
 
-test.todo("Basic function");
+test("Basic function", t => {
+    const spec: Spec = {
+        type: TypeNames.FUNCTION,
+        properties: {
+            foo: "bar"
+        }
+    };
+    function actual() {}
+    t.throws(() => conforms(spec, actual));
+    actual.foo = "bar";
+    t.notThrows(() => conforms(spec, actual));
+});
 
 test("Number literal", t => {
     t.notThrows(() => {

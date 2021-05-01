@@ -43,6 +43,7 @@ export function conforms(spec: Spec, actual: unknown) {
             case TypeNames.OBJECT:
                 return objectConforms(spec, actual);
             case TypeNames.FUNCTION:
+                return functionConforms(spec, actual);
             default:
                 throw new Error();
         }
@@ -53,6 +54,11 @@ export function conforms(spec: Spec, actual: unknown) {
     }
 }
 
+/**
+ * Asserts actual is an object that conforms to the spec.
+ * @param spec 
+ * @param actual 
+ */
 function objectConforms(spec: TypeObject, actual: unknown) {
     // Ensure object
     if (typeof actual !== "object") {
@@ -68,6 +74,25 @@ function objectConforms(spec: TypeObject, actual: unknown) {
     propertiesConform(spec.properties ?? {}, actual);
 }
 
+/**
+ * Asserts actual is a function that conforms to the spec.
+ * @param spec 
+ * @param actual 
+ */
+function functionConforms(spec: TypeFunction, actual: unknown) {
+    // Ensure function
+    if (typeof actual !== "function") {
+        throw new AssertionError();
+    }
+
+    // Assert property conformance
+    propertiesConform(spec.properties ?? {}, actual);
+}
+
+/**
+ * Creates a map from an object (or object like entity) containing its properties.
+ * @param actual 
+ */
 function getPropertyMap(actual: object): Map<string, unknown> {
     const keys = Object.keys(actual);
     const propertiesMap = new Map<string, unknown>();
