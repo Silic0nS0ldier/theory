@@ -1,0 +1,23 @@
+{
+  "name": "@theory/cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "compile": "del-cli ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ppaya/result-ts": "^1.1.0",
+    "ts-command-line-args": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.10",
+    "del-cli": "^4.0.1",
+    "fp-ts": "^2.11.1",
+    "typescript": "^4.4.2"
+  }
+}
