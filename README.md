@@ -71,7 +71,21 @@ Mistakes happen, particularly where async/await and callbacks are concerned. Sho
 
 * Test file as execution alias. Running the file via a supported runtime should test it as though runner was triggered with a single file.
   Consideration for how the configuration is discovered is needed however. Further, what about projects with build steps?
+  ```
+  node path/to/test-file.test.js
+  ```
 
 * First-class multi-config support.
   Should be possible to run everything with 1 command and no performance hit.
   Would necessitate a new process for each config to guard against side effects.
+
+* Memory monitor.
+  Useful for identifying memory leaks and unintended memory mismanagement.
+  Handy for tracking down issues like that caches that never are unloaded.
+
+* Mutation testing.
+  A technique where a program modifies code to create "mutations" that help to;
+  * Validate unit tests.
+  * Identify superfluous code.
+  * Improve integrity by flushing out implementation weaknesses.
+  See Stryker Mutator.

@@ -1,0 +1,28 @@
+{
+  "name": "@theory/agent-nodejs",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "exports": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "scripts": {
+    "pretest": "del-cli ./dist && tsc",
+    "test": "ava"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@theory/core": "workspace:*",
+    "web-worker": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "del-cli": "^3.0.1",
+    "typescript": "^4.2.2"
+  },
+  "ava": {
+    "files": [
+      "dist/**/*.test.js"
+    ]
+  }
+}
