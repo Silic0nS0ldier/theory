@@ -6,14 +6,14 @@
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "scripts": {
-    "pretest": "del-cli ./dist && tsc",
+    "compile": "del-cli ./dist && tsc",
     "test": "ava"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@theory/core": "workspace:*",
-    "web-worker": "^1.0.0"
+    "web-worker": "../web-worker-1.0.0.tgz"
   },
   "devDependencies": {
     "ava": "^3.15.0",

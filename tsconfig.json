@@ -2,7 +2,7 @@
     "compilerOptions": {
         "incremental": true,
         "target": "es2020",
-        "module": "esnext",
+        "module": "es2020",
         "lib": [
             "es2015",
             "esnext.asynciterable"
@@ -11,6 +11,7 @@
         "importHelpers": false,
         "strict": true,
         "moduleResolution": "node",
-        "declaration": true
+        "declaration": true,
+        "noUncheckedIndexedAccess": true
     }
 }
