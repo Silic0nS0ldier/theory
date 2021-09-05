@@ -1,0 +1,4 @@
+{
+    "$schema": "../../packages/core/src/theory.config-schema.json",
+    "extends": "..."
+}
