@@ -1,8 +1,6 @@
 # Assertions
 
-Assertions built with speed, correctness, and determinism in mind.
-
-TODO: Revise reporting implementation. Use hooks, and assertions should return true/false.
+Assertions for Theory built with speed, correctness, and determinism in mind. Not exception based.
 
 ## Usage
 
