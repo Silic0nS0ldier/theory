@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ppaya/result-ts": "^1.1.0",
-    "ts-command-line-args": "^2.1.0"
+    "ts-command-line-args": "^2.1.0",
+    "@theory/util-result": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^16.7.10",

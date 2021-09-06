@@ -8,6 +8,9 @@ importers:
     devDependencies:
       typescript: 4.4.2
 
+  examples/example-1:
+    specifiers: {}
+
   packages/agent-nodejs:
     specifiers:
       '@theory/core': workspace:*
@@ -38,14 +41,14 @@ importers:
 
   packages/cli:
     specifiers:
-      '@ppaya/result-ts': ^1.1.0
+      '@theory/util-result': workspace:*
       '@types/node': ^16.7.10
       del-cli: ^4.0.1
       fp-ts: ^2.11.1
       ts-command-line-args: ^2.1.0
       typescript: ^4.4.2
     dependencies:
-      '@ppaya/result-ts': 1.1.0_fp-ts@2.11.1
+      '@theory/util-result': link:../util-result
       ts-command-line-args: 2.1.0
     devDependencies:
       '@types/node': 16.7.10
@@ -55,9 +58,27 @@ importers:
 
   packages/core:
     specifiers:
+      '@theory/util-result': workspace:*
       ava: ^3.15.0
+      context: ../context-v1.1.4.tgz
       del-cli: ^3.0.1
       typescript: ^4.4.2
+    dependencies:
+      '@theory/util-result': link:../util-result
+      context: file:packages/context-v1.1.4.tgz
+    devDependencies:
+      ava: 3.15.0
+      del-cli: 3.0.1
+      typescript: 4.4.2
+
+  packages/util-result:
+    specifiers:
+      ava: ^3.15.0
+      context: ../context-v1.1.4.tgz
+      del-cli: ^3.0.1
+      typescript: ^4.4.2
+    dependencies:
+      context: file:packages/context-v1.1.4.tgz
     devDependencies:
       ava: 3.15.0
       del-cli: 3.0.1
@@ -134,14 +155,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.12.0
     dev: true
-
-  /@ppaya/result-ts/1.1.0_fp-ts@2.11.1:
-    resolution: {integrity: sha512-PPMkKGEmLf/bf/KKAeZC+06uAOvNwlhLrhaXTK7wnlXyUVFKN+DV/TgpMCaaMRFZxerKORccK/G23cM0h7623g==}
-    peerDependencies:
-      fp-ts: 2.x
-    dependencies:
-      fp-ts: 2.11.1
-    dev: false
 
   /@sindresorhus/is/0.14.0:
     resolution: {integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==}
@@ -2453,6 +2466,13 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:packages/context-v1.1.4.tgz:
+    resolution: {integrity: sha512-Uhc1VVFZVMjDnkUFWYrz73rF66MMi3ai1ihI3nq8YirsX0ZimJfgVQVK9W1YnsGodWF0hA/gQT1JkvT64DVUnQ==, tarball: file:packages/context-v1.1.4.tgz}
+    name: context
+    version: 1.1.4
+    engines: {node: '>=10'}
+    dev: false
 
   file:packages/web-worker-1.0.0.tgz:
     resolution: {integrity: sha512-CZOVGJ7Zh1pFFi7mioTxgPwtpwmMYV9gg3xdisKSdmD7ZNvJagDVnxiQoGKjsI7yC8XWmUacMC33EGmo0VtPog==, tarball: file:packages/web-worker-1.0.0.tgz}

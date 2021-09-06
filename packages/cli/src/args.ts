@@ -1,5 +1,5 @@
 import { parse } from "ts-command-line-args";
-import { err, ok, Result } from "@ppaya/result-ts";
+import { err, ok, Result } from "@theory/util-result";
 
 type GenericError = {};
 

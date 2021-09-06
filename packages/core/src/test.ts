@@ -21,3 +21,34 @@ export type TestFn = (t: TestContext) => void;
 export type Test = TestFn & {
     meta?: TestMeta,
 };
+
+// ---
+
+// hook for test context
+// whole api surface needs to be functional so that things running after can be caught
+
+import { err, ok, Result } from "@theory/util-result";
+import _createContext from "context";
+// @ts-ignore
+const createContext: typeof _createContext = _createContext.default;
+
+const testContext = createContext<TextContextData>();
+
+type TextContextData = {};
+type GenericError = {};
+
+export function useTestContext(): Result<TextContextData, GenericError> {
+    const testContextData = testContext.use();
+
+    if (testContextData) {
+        // success
+        return ok(testContextData);
+    }
+
+    // error
+    return err({});
+}
+
+export function bindTestContext<T extends Function>(test: T): T {
+    return testContext.bind({}, test);
+}

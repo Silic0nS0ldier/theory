@@ -1,7 +1,7 @@
 {
-  "name": "@theory/core",
+  "name": "@theory/util-result",
   "version": "0.1.0",
-  "description": "Core API for Theory test framework.",
+  "description": "Function result utils.",
   "type": "module",
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -22,7 +22,6 @@
     ]
   },
   "dependencies": {
-    "context": "../context-v1.1.4.tgz",
-    "@theory/util-result": "workspace:*"
+    "context": "../context-v1.1.4.tgz"
   }
 }

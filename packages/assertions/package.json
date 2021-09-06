@@ -6,7 +6,7 @@
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "scripts": {
-    "pretest": "del-cli ./dist && tsc",
+    "compile": "del-cli ./dist && tsc",
     "test": "ava"
   },
   "author": "",
