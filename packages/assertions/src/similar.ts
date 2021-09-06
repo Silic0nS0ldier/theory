@@ -1,3 +1,5 @@
+import { getTestContext } from "@theory/core";
+
 /**
  * Asserts that inputs are similar.
  * Intended as a stop-gap for assertions whose inputs may be impacted by timing or some form of
@@ -7,5 +9,7 @@
  * @param actual 
  */
 export function similar(expected: unknown, actual: unknown) {
+    const t = getTestContext();
 
+    return false;
 }

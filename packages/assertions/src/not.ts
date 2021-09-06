@@ -1,4 +1,4 @@
-import { AssertionError } from "./assertion-error.js";
+import { getTestContext } from "@theory/core";
 import { is } from "./is.js";
 
 /**
@@ -7,12 +7,7 @@ import { is } from "./is.js";
  * @param expected 
  */
 export function not(actual: unknown, expected: unknown) {
-    try {
-        is(actual, expected);
-    }
-    catch {
-        return;
-    }
+    const t = getTestContext();
 
-    throw new AssertionError();
+    return !is(actual, expected);
 }

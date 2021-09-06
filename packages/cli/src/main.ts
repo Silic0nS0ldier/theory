@@ -1,4 +1,4 @@
-import { isErr, unwrap } from "@ppaya/result-ts";
+import { isErr, unwrap } from "@theory/util-result";
 import { getArgs } from "./args.js";
 
 const argsResult = getArgs(process.argv);

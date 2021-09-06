@@ -1,54 +1,45 @@
 import { FileSystemContract } from "./contracts/fs.js";
-
-export type TestMeta = Map<Symbol, unknown>;
-
-export type TestContext = {
-    // hooks for isolated file system
-    // both temporary and persistent
-    // temporary to be used by file system dependent code (not assertions)
-    // persistent to be used by assertions for things like snapshots and similarity specs
-    // approach should consider fs mocking
-    // some targets won't have fs access, should raise error
-    // ideally error produced on attempting to access fs logic (less places to check)
-    readonly internal: {
-        readonly fs: FileSystemContract,
-    },
-    readonly fs: FileSystemContract,
-};
-
-export type TestFn = (t: TestContext) => void;
-
-export type Test = TestFn & {
-    meta?: TestMeta,
-};
-
-// ---
-
-// hook for test context
-// whole api surface needs to be functional so that things running after can be caught
-
 import { err, ok, Result } from "@theory/util-result";
-import _createContext from "context";
-// @ts-ignore
-const createContext: typeof _createContext = _createContext.default;
+import { createContext } from "context";
 
-const testContext = createContext<TextContextData>();
+const testContextStore = createContext<TextContext>();
 
-type TextContextData = {};
-type GenericError = {};
+type TextContext = {
+    fs: FileSystemContract,
+};
 
-export function useTestContext(): Result<TextContextData, GenericError> {
-    const testContextData = testContext.use();
+const enum GetTestContextErrorTypes {
+    NO_CONTEXT = "NO_CONTEXT",
+};
+type NoContextError = {
+    readonly type: GetTestContextErrorTypes.NO_CONTEXT,
+};
+type GetTestContextErrors =
+    | NoContextError;
 
-    if (testContextData) {
-        // success
-        return ok(testContextData);
+/**
+ * Gets the context for the current test.
+ * @returns The test context.
+ */
+export function getTestContext(): Result<TextContext, GetTestContextErrors> {
+    const testContext = testContextStore.use();
+
+    if (testContext) {
+        return ok(testContext);
     }
 
-    // error
-    return err({});
+    return err({
+        type: GetTestContextErrorTypes.NO_CONTEXT,
+    });
 }
 
 export function bindTestContext<T extends Function>(test: T): T {
-    return testContext.bind({}, test);
+    const textContext: TextContext = {
+        fs: {
+            read() { throw new Error("Not implemented"); },
+            write() { throw new Error("Not implemented"); },
+        }
+    };
+    // @ts-expect-error
+    return testContextStore.bind(textContext, test);
 }

@@ -1,10 +1,12 @@
-import { AssertionError } from "./assertion-error.js";
+import { getTestContext } from "@theory/core";
 
 /**
  * Asserts input function throws an exception matching the spec.
  * @param actualFn 
  */
-export async function throws(actualFn: () => Promise<void>|void): Promise<void> {
+export async function throws(actualFn: () => Promise<void>|void): Promise<boolean> {
+    const t = getTestContext();
+
     let thrown = false;
     try {
         await actualFn();
@@ -13,8 +15,6 @@ export async function throws(actualFn: () => Promise<void>|void): Promise<void> 
         thrown = true;
         // If does not match spec, throw
     }
-    
-    if (!thrown) {
-        throw new AssertionError();
-    }
+
+    return thrown;
 }

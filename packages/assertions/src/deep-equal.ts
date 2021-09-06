@@ -1,4 +1,4 @@
-import { AssertionError } from "./assertion-error.js";
+import { getTestContext } from "@theory/core";
 
 function isPrimative(value: unknown) {
     return value !== Object(value);
@@ -12,14 +12,17 @@ function isPrimative(value: unknown) {
  * @param actual 
  * @param spec - A spec that defines properties which must have referential equality.
  */
-export function deepEqual(expected: unknown, actual: unknown) {
+export function deepEqual(expected: unknown, actual: unknown): boolean {
+    const t = getTestContext();
+
     // Throw if expected or actual are primative
     if (isPrimative(expected)) {
-        throw new AssertionError();
+        return false;
     }
     if (isPrimative(actual)) {
-        throw new AssertionError();
+        return false;
     }
 
     // What about common references? Could indicate a flaky test.
+    return true;
 }

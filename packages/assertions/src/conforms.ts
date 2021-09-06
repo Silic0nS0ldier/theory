@@ -1,4 +1,4 @@
-import { AssertionError } from "./assertion-error.js";
+import { getTestContext } from "@theory/core";
 import { is } from "./is.js";
 
 export const enum TypeNames {
@@ -37,7 +37,9 @@ export type Spec = TypeObject
  * @param spec - A strict spec that the actual must conform to.
  * @param actual 
  */
-export function conforms(spec: Spec, actual: unknown) {
+export function conforms(spec: Spec, actual: unknown): boolean {
+    const t = getTestContext();
+
     if (typeof spec === "object") {
         switch (spec.type) {
             case TypeNames.OBJECT:
@@ -45,12 +47,13 @@ export function conforms(spec: Spec, actual: unknown) {
             case TypeNames.FUNCTION:
                 return functionConforms(spec, actual);
             default:
-                throw new Error();
+                // TODO Report error
+                return false;
         }
     }
     else {
         // TODO Provide context for error source
-        is(spec, actual);
+        return is(spec, actual);
     }
 }
 
@@ -59,19 +62,19 @@ export function conforms(spec: Spec, actual: unknown) {
  * @param spec 
  * @param actual 
  */
-function objectConforms(spec: TypeObject, actual: unknown) {
+function objectConforms(spec: TypeObject, actual: unknown): boolean {
     // Ensure object
     if (typeof actual !== "object") {
-        throw new AssertionError();
+        return false;
     }
     
     // Ensure value
     if (actual === null) {
-        throw new AssertionError();
+        return false;
     }
 
     // Assert property conformance
-    propertiesConform(spec.properties ?? {}, actual);
+    return propertiesConform(spec.properties ?? {}, actual);
 }
 
 /**
@@ -79,14 +82,14 @@ function objectConforms(spec: TypeObject, actual: unknown) {
  * @param spec 
  * @param actual 
  */
-function functionConforms(spec: TypeFunction, actual: unknown) {
+function functionConforms(spec: TypeFunction, actual: unknown): boolean {
     // Ensure function
     if (typeof actual !== "function") {
-        throw new AssertionError();
+        return false
     }
 
     // Assert property conformance
-    propertiesConform(spec.properties ?? {}, actual);
+    return propertiesConform(spec.properties ?? {}, actual);
 }
 
 /**
@@ -104,16 +107,22 @@ function getPropertyMap(actual: object): Map<string, unknown> {
     return propertiesMap;
 }
 
-function propertiesConform(specProperties: Properties, actual: object) {
+function propertiesConform(specProperties: Properties, actual: object): boolean {
     const propertyMap = getPropertyMap(actual);
 
     // Same number of keys
-    is(Object.keys(specProperties).length, propertyMap.size);
+    if (!is(Object.keys(specProperties).length, propertyMap.size)) {
+        return false;
+    }
 
     // Iterate over each and validate conformance
     for (const propertyName in specProperties) {
         if (Object.prototype.hasOwnProperty.call(specProperties, propertyName)) {
-            conforms(specProperties[propertyName], (actual as any)[propertyName]);
+            if (!conforms(specProperties[propertyName] as Spec, (actual as any)[propertyName])) {
+                return false;
+            }
         }
     }
+
+    return true;
 }

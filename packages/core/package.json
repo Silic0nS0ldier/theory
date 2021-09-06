@@ -22,7 +22,7 @@
     ]
   },
   "dependencies": {
-    "context": "../context-v1.1.4.tgz",
-    "@theory/util-result": "workspace:*"
+    "@theory/util-result": "workspace:*",
+    "context": "file:../context-v1.1.4.tgz"
   }
 }

@@ -1,4 +1,4 @@
-import { AssertionError } from "./assertion-error.js";
+import { getTestContext } from "@theory/core";
 
 /**
  * Asserts that inputs are the same (referentially equal for reference types, identical for value
@@ -7,10 +7,12 @@ import { AssertionError } from "./assertion-error.js";
  * @param expected 
  * @param actual 
  */
-export function is(expected: unknown, actual: unknown) {
+export function is(expected: unknown, actual: unknown): boolean {
+    const t = getTestContext();
+
     if (Object.is(expected, actual)) {
-        return;
+        return true;
     }
 
-    throw new AssertionError();
+    return false;
 }
