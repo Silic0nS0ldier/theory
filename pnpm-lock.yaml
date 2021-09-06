@@ -9,7 +9,10 @@ importers:
       typescript: 4.4.2
 
   examples/example-1:
-    specifiers: {}
+    specifiers:
+      '@theory/assertions': workspace:*
+    dependencies:
+      '@theory/assertions': link:../../packages/assertions
 
   packages/agent-nodejs:
     specifiers:

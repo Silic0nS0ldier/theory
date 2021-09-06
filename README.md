@@ -31,13 +31,29 @@ The initial inspiration behind this library was to develop something similar to 
 
 ## Planning
 
-Any test is exported. This avoids need for an expensive test registry system, reducing complexity and lends itself to better performance thanks to less overhead.
+Tests are exported, avoiding the need for test registry systems and enforcing test identity uniqueness at a language level.
 
-Work on principle of test agents (current runtime, Chromium, VS Code, etc). Agent comms up to agent driver.
+Runtimes are supported via agent packages which keep integration logic out of the core.
 
-Support execution order and isolation mixing, where tests can be run within fresh environments (at performance expense) and run in different orders to assist in flushing out bugs that otherwise would go unnoticed.
+Use an efficient agent for test discovery (not test files, just identities). Avoids duplicating effort.
 
-Important that watcher scenarios are considered. We can never be confident code is 100% pure (no side effects) so environment needs to be scrubbed between runs. Worthwhile in future adding opt-in agent reuse. Test discovery needs to occur in a separate process to isolate errors, minimise damage should a dependency contain malware (runner will need file system and potentially network access, so a lot of damage could be done), and simplify the overall implementation (no code reload hacks needed).
+Certain test agents are likely to take a long time to spin up, shouldn't hold up execution of tests on faster agents.
+
+Support specifying a configuration.
+
+Core libraries should never throw, instead expressing errors via the result. `try..catch` carries a significant performance cost (so minimise their usage) and as they aren't expressed as part of a functions signiture are a source of runtime errors.
+
+### Test Validation
+
+Support randomising execution order and complete isolation to flush out flaky tests which are affected by other tests.
+
+### Watch Mode
+
+Watch mode is a common feature for JS test frameworks, it should be a part of v1.
+
+Reusing runtimes for tests is faster, but can be tricky. Memory usage may accumulate over time (old parsed source persisting) and many JS APIs are not pure. It should still be an option however, if not in v1.
+
+### Analytics/Quality Control
 
 Opt-in analytics. Handy for;
 * Profiling upstream dependencies against a large sample set.
@@ -49,9 +65,7 @@ Useful data includes;
 * Environment
 * Test system version
 
-Certain test agents are likely to take a long time to spin up, shouldn't hold up execution of tests on faster agents.
-
-Support specifying a configuration.
+### Error Reporting
 
 Differentiate between failure types. e.g.;
 * Assertion failure
@@ -61,18 +75,14 @@ Differentiate between failure types. e.g.;
   * Error from imported library (tricky to implement)
   * Error defined by code being tested.
 
-A lot of the usability enhancements come with a perfromance cost. Start time needs to be kept minimal, so ideally enhancements can be applied after tests have run (as much as is possible).
-
-Mistakes happen, particularly where async/await and callbacks are concerned. Should make it as easy as possible (and at the very least possible) to trace rouge promises and callbacks that are continuing after the test has terminated.
-
-Core libraries should never throw, instead expressing errors via the result. `try..catch` carries a significant performance cost (so minimise their usage) and as they aren't expressed as part of a functions signiture are a source of runtime errors.
+Mistakes happen, particularly where async/await and callbacks are concerned. Should make it as easy as possible (and at the very least possible) to trace rouge promises and callbacks that are continuing after the test has terminated. This is doable on NodeJS via async hooks, other runtimes are much more difficult.
 
 ## Future Scope
 
 * Chaos engineering, implemented via a plugin. Good way to prove framework extensibility. Good way to help people catch common pitfalls more easily.
 
 * Test file as execution alias. Running the file via a supported runtime should test it as though runner was triggered with a single file.
-  Consideration for how the configuration is discovered is needed however. Further, what about projects with build steps?
+  Tricky given there is no test wrapper.
   ```
   node path/to/test-file.test.js
   ```
