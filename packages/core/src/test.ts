@@ -1,11 +1,13 @@
 import { FileSystemContract } from "./contracts/fs.js";
 import { err, ok, Result } from "@theory/util-result";
 import { createContext } from "context";
+import { AssertionReportContract } from "./contracts/assertion-report.js";
 
 const testContextStore = createContext<TextContext>();
 
 type TextContext = {
     fs: FileSystemContract,
+    report: AssertionReportContract,
 };
 
 const enum GetTestContextErrorTypes {
@@ -40,7 +42,8 @@ export function bindTestContext(test: TestFn): TestFn {
         fs: {
             read() { throw new Error("Not implemented"); },
             write() { throw new Error("Not implemented"); },
-        }
+        },
+        report: {},
     };
 
     return testContextStore.bind(textContext, test);
