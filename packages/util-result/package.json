@@ -6,15 +6,14 @@
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "scripts": {
-    "compile": "del-cli ./dist && tsc",
+    "build": "tbt build",
     "test": "ava"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^3.15.0",
-    "del-cli": "^3.0.1",
-    "typescript": "^4.4.2"
+    "@theory/build-tools": "workspace:*",
+    "ava": "^3.15.0"
   },
   "ava": {
     "files": [

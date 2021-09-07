@@ -5,19 +5,18 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "compile": "del-cli ./dist && tsc",
+    "build": "tbt build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ts-command-line-args": "^2.1.0",
-    "@theory/util-result": "workspace:*"
+    "@theory/build-tools": "workspace:*",
+    "@theory/util-result": "workspace:*",
+    "ts-command-line-args": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^16.7.10",
-    "del-cli": "^4.0.1",
-    "fp-ts": "^2.11.1",
-    "typescript": "^4.4.2"
+    "fp-ts": "^2.11.1"
   }
 }

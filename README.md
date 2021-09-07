@@ -101,3 +101,11 @@ Mistakes happen, particularly where async/await and callbacks are concerned. Sho
   * Identify superfluous code.
   * Improve integrity by flushing out implementation weaknesses.
   See Stryker Mutator.
+
+## Getting Started
+
+```sh
+pnpm i
+pnpm run build -r
+pnpm run test -r
+```

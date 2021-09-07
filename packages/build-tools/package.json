@@ -1,0 +1,15 @@
+{
+    "name": "@theory/build-tools",
+    "type": "module",
+    "bin": {
+        "tbt": "./src/cli.js"
+    },
+    "exports": {
+        "./tsconfig.json": "./tsconfig.json"
+    },
+    "dependencies": {
+        "execa": "^5.1.1",
+        "del": "^6.0.0",
+        "typescript": "^4.4.2"
+    }
+}
