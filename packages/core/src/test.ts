@@ -33,13 +33,15 @@ export function getTestContext(): Result<TextContext, GetTestContextErrors> {
     });
 }
 
-export function bindTestContext<T extends Function>(test: T): T {
+type TestFn = () => Promise<void>|void;
+
+export function bindTestContext(test: TestFn): TestFn {
     const textContext: TextContext = {
         fs: {
             read() { throw new Error("Not implemented"); },
             write() { throw new Error("Not implemented"); },
         }
     };
-    // @ts-expect-error
+
     return testContextStore.bind(textContext, test);
 }
