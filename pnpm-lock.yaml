@@ -53,7 +53,6 @@ importers:
       '@theory/build-tools': workspace:*
       '@theory/util-result': workspace:*
       '@types/node': ^16.7.10
-      fp-ts: ^2.11.1
       ts-command-line-args: ^2.1.0
     dependencies:
       '@theory/build-tools': link:../build-tools
@@ -61,7 +60,6 @@ importers:
       ts-command-line-args: 2.1.0
     devDependencies:
       '@types/node': 16.7.10
-      fp-ts: 2.11.1
 
   packages/core:
     specifiers:
@@ -814,10 +812,6 @@ packages:
     dependencies:
       locate-path: 5.0.0
       path-exists: 4.0.0
-    dev: true
-
-  /fp-ts/2.11.1:
-    resolution: {integrity: sha512-CJOfs+Heq/erkE5mqH2mhpsxCKABGmcLyeEwPxtbTlkLkItGUs6bmk2WqjB2SgoVwNwzTE5iKjPQJiq06CPs5g==}
     dev: true
 
   /fs.realpath/1.0.0:
