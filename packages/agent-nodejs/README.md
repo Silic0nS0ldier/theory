@@ -9,6 +9,8 @@ Dynamic import with a constant path is fairly easy to support (tooling like roll
 It is not the responsibility of the test library to patch dynamic import support, nor should it modify code if it can be helped.
 Decision: Dynamic import won't be used in cross runtime dependencies, runtime specific dependencies are allowed if support on target, user code must be in a form the runtime is compatible with before theory picks it up.
 
+Check for `node_modules` candidates that are not part of test (e.g. in folders above temporary directory). This is to provide basic (and cheap) test isolation.
+
 **Example test file**
 
 ```ts
