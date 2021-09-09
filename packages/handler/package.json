@@ -1,7 +1,7 @@
 {
-    "name": "@theory/core",
+    "name": "@theory/handler",
     "version": "0.1.0",
-    "description": "Core API for Theory test framework.",
+    "description": "",
     "type": "module",
     "exports": "./dist/main.js",
     "types": "./dist/main.d.ts",
@@ -13,15 +13,16 @@
     "license": "ISC",
     "devDependencies": {
         "@theory/build-tools": "workspace:*",
+        "@types/node": "^16.7.10",
         "ava": "^3.15.0"
+    },
+    "dependencies": {
+        "@theory/core": "workspace:*",
+        "@theory/util-result": "workspace:*"
     },
     "ava": {
         "files": [
             "dist/**/*.test.js"
         ]
-    },
-    "dependencies": {
-        "@theory/util-result": "workspace:*",
-        "context": "file:../context-v1.1.4.tgz"
     }
 }
