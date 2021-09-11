@@ -77,6 +77,21 @@ Differentiate between failure types. e.g.;
 
 Mistakes happen, particularly where async/await and callbacks are concerned. Should make it as easy as possible (and at the very least possible) to trace rouge promises and callbacks that are continuing after the test has terminated. This is doable on NodeJS via async hooks, other runtimes are much more difficult.
 
+### Coverage Trimming
+
+In the JS ecosystem coverage is typically achieved by running the test runner through a coverage runner. e.g.
+
+```sh
+# Use NodeJS V8 coverage, with instanbul reporters
+c8 ava
+# Instanbul
+nyc ava
+```
+
+Jest approaches this problem differently. Instead coverage is only captured during execution of individual test functions, which prevents test preparation contributing to coverage that otherwise might mask a gap in test coverage.
+
+The runtime agnostic approach to this project means a different approach is needed to get coverage data from more runtimes anyway, so we might as well borrow coverage trimming in the process.
+
 ## Future Scope
 
 * Chaos engineering, implemented via a plugin. Good way to prove framework extensibility. Good way to help people catch common pitfalls more easily.
