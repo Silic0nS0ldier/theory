@@ -117,6 +117,11 @@ The runtime agnostic approach to this project means a different approach is need
   * Improve integrity by flushing out implementation weaknesses.
   See Stryker Mutator.
 
+* Generation Memory
+  Persist generations of tested code for a time such that it may be referenced.
+  * Enables developer to rollback to a known better state, or pick out code which has since been removed.
+  * Could be used by test GUI to associate test outcome changes to modified source (in a more granular manner compared to git alone).
+
 ## Getting Started
 
 ```sh
