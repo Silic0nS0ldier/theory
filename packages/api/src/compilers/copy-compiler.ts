@@ -17,6 +17,7 @@ export function createCopyCompiler(paths: RenameItem[], { fs }: Services): Compi
             // TODO Error handling
             await fs.copy(path, outputDir);
         }
+
         return ok();
     };
 }

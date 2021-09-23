@@ -1,8 +1,18 @@
-// File system contract
-// This is an interface for file system interactions
-// This is designed to make tests portable across runtimes
-// It also encourages the creation of more testable code
-// This also makes it possible for emulated file systems interactions to be added, a boon for test performance
+// Depending on how this evolves, it may have use outside of Theory
+
+/**
+ * File system contract
+ * This is an interface for file system interactions.
+ * This is designed to make tests portable across runtimes.
+ * It also encourages the creation of more testable code.
+ * This also makes it possible for emulated file systems interactions to be added, a boon for test
+ * performance.
+ * @todo Decide on path management approach (string-like or something else)
+ * @todo Divide up contract surface by capabilities (e.g. read/write)
+ * @todo Investigate existing FS APIs to determine if and how scale optimisations can be made (e.g. file streaming, partial read)
+ * @todo Error types (not enough space, blocked by permissions, too long path)
+ * @todo How should copy/move handle subject not existing or being an empty folder tree?
+ */
 
 import { Result } from "@theory/util-result";
 
