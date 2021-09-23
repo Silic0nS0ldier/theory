@@ -4,7 +4,7 @@
 
 // Creates a handler, this handes most interactions
 function createHandler(): Handler {
-
+    throw '';
 }
 
 type Handler = {};
@@ -12,7 +12,7 @@ type Handler = {};
 // copy test source to temporary location for execution
 // a given generation won't be affected by file system changes
 function pinGeneration(handler: Handler): Generation {
-
+    throw '';
 }
 
 // ends a generation, cleaning up artefacts

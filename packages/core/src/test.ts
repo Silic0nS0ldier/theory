@@ -42,6 +42,8 @@ export function bindTestContext(test: TestFn): TestFn {
         fs: {
             read() { throw new Error("Not implemented"); },
             write() { throw new Error("Not implemented"); },
+            copy() { throw new Error("Not implemented"); },
+            move() { throw new Error("Not implemented"); },
         },
         report: {},
     };

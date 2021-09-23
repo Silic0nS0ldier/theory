@@ -27,6 +27,21 @@ importers:
       '@theory/build-tools': link:../build-tools
       ava: 3.15.0
 
+  packages/api:
+    specifiers:
+      '@theory/build-tools': workspace:*
+      '@theory/core': workspace:*
+      '@theory/util-result': workspace:*
+      '@types/node': ^16.7.10
+      ava: ^3.15.0
+    dependencies:
+      '@theory/core': link:../core
+      '@theory/util-result': link:../util-result
+    devDependencies:
+      '@theory/build-tools': link:../build-tools
+      '@types/node': 16.7.10
+      ava: 3.15.0
+
   packages/assertions:
     specifiers:
       '@theory/build-tools': workspace:*
@@ -72,21 +87,6 @@ importers:
       context: file:packages/context-v1.1.4.tgz
     devDependencies:
       '@theory/build-tools': link:../build-tools
-      ava: 3.15.0
-
-  packages/handler:
-    specifiers:
-      '@theory/build-tools': workspace:*
-      '@theory/core': workspace:*
-      '@theory/util-result': workspace:*
-      '@types/node': ^16.7.10
-      ava: ^3.15.0
-    dependencies:
-      '@theory/core': link:../core
-      '@theory/util-result': link:../util-result
-    devDependencies:
-      '@theory/build-tools': link:../build-tools
-      '@types/node': 16.7.10
       ava: 3.15.0
 
   packages/util-result:
