@@ -8,17 +8,17 @@ importers:
     dependencies:
       '@theory/assertions': link:../../packages/assertions
 
-  packages/agent-nodejs:
+  packages/agent/agent-nodejs:
     specifiers:
       '@theory/build-tools': workspace:*
       '@theory/core': workspace:*
       ava: ^4.0.0-alpha.2
-      web-worker: file:../web-worker-1.0.0.tgz
+      web-worker: file:../../web-worker-1.0.0.tgz
     dependencies:
-      '@theory/core': link:../core
+      '@theory/core': link:../../core
       web-worker: file:packages/web-worker-1.0.0.tgz
     devDependencies:
-      '@theory/build-tools': link:../build-tools
+      '@theory/build-tools': link:../../build-tools
       ava: 4.0.0-alpha.2
 
   packages/api:
@@ -30,7 +30,7 @@ importers:
       ava: ^4.0.0-alpha.2
     dependencies:
       '@theory/core': link:../core
-      '@theory/util-result': link:../util-result
+      '@theory/util-result': link:../result
     devDependencies:
       '@theory/build-tools': link:../build-tools
       '@types/node': 16.10.1
@@ -65,7 +65,7 @@ importers:
       ts-command-line-args: ^2.1.0
     dependencies:
       '@theory/build-tools': link:../build-tools
-      '@theory/util-result': link:../util-result
+      '@theory/util-result': link:../result
       ts-command-line-args: 2.1.0
     devDependencies:
       '@types/node': 16.10.1
@@ -77,13 +77,13 @@ importers:
       ava: ^4.0.0-alpha.2
       context: file:../context-v1.1.4.tgz
     dependencies:
-      '@theory/util-result': link:../util-result
+      '@theory/util-result': link:../result
       context: file:packages/context-v1.1.4.tgz
     devDependencies:
       '@theory/build-tools': link:../build-tools
       ava: 4.0.0-alpha.2
 
-  packages/util-result:
+  packages/result:
     specifiers:
       '@theory/build-tools': workspace:*
       ava: ^4.0.0-alpha.2

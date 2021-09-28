@@ -1,0 +1,1 @@
+// Implementation of FS contract for NodeJS APIs
