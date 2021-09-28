@@ -1,6 +1,0 @@
-{
-    "private": true,
-    "devDependencies": {
-        "typescript": "^4.4.3"
-    }
-}

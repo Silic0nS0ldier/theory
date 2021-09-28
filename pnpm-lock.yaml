@@ -2,12 +2,6 @@ lockfileVersion: 5.3
 
 importers:
 
-  .:
-    specifiers:
-      typescript: ^4.4.3
-    devDependencies:
-      typescript: 4.4.3
-
   examples/example-1:
     specifiers:
       '@theory/assertions': workspace:*
@@ -1889,6 +1883,7 @@ packages:
     resolution: {integrity: sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: false
 
   /typical/4.0.0:
     resolution: {integrity: sha512-VAH4IvQ7BDFYglMd7BPRDfLgxZZX4O4TFcRDA6EN5X7erNJJq+McIEp8np9aVtxrCJ6qx4GTYVfOWNjcqwZgRw==}
