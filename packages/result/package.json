@@ -19,8 +19,5 @@
     "files": [
       "dist/**/*.test.js"
     ]
-  },
-  "dependencies": {
-    "context": "file:../context-v1.1.4.tgz"
   }
 }

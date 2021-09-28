@@ -31,13 +31,69 @@
   * Folder and file management is automated. Missing folders will be created, unused files will be removed.
   */
  export type FileSystemContract = {
-     /** Reads contents of a file. */
-     read(path: Path): Promise<Result<unknown, unknown>>;
-     /** Writes to file. */
-     write(path: Path, content: unknown): Promise<Result<void, unknown>>;
-     /** Copies file or folder (namespace) to specified target. */
-     copy(from: RenameItem, to: Path): Promise<Result<void, unknown>>;
-     /** Moves file or folder (namespace) to specified target. */
-     move(from: RenameItem, to: Path): Promise<Result<void, unknown>>;
- }
- 
+    /** Reads contents of a file. */
+    read(path: Path): Promise<Result<unknown, unknown>>;
+    /** Writes to file. */
+    write(path: Path, content: unknown): Promise<Result<void, unknown>>;
+    /** Copies file or folder (namespace) to specified target. */
+    copy(from: RenameItem, to: Path): Promise<Result<void, unknown>>;
+    /** Moves file or folder (namespace) to specified target. */
+    move(from: RenameItem, to: Path): Promise<Result<void, unknown>>;
+}
+
+// Below are FS contract slices, shortcut types for consumers
+// Intent is to create a system where API contracts can be kept minimal
+// Some slices have very limited functionalty, this is not for security but rather to
+// discourage/prevent API misuse that would hamper performance or otherwise mislead as to consumer
+// requirements.
+
+// Read single file
+// Limited contract, acts as a helper type for deferred file reads
+type ReadSingleFSContract = () => unknown;
+
+// Read and discover files
+type ReadFSContract = {
+    read(path: Path): unknown,
+    // and deferred
+    tbdSingle(): ReadSingleFSContract,
+} & DiscoverFSContract;
+
+// Discover files
+type DiscoverFSContract = {
+    // discovery API TBD, these are normally limited via dir conventions
+    // may be that discovery is constrained to namespaces vs. folders (more portable concept)
+};
+
+// Watch (for changes) and discover files
+type WatchFSContract = {
+    // watcher creation functions
+    tbd(): WatcherFSContract,
+} & DiscoverFSContract;
+
+// Active watcher, naive
+// Limited contract, acts as a helper for naive trigger
+type WatcherNaiveFSContract = {
+    // need to figure out addition and removal of listeners
+};
+
+// Active watcher and discover files
+type WatcherFSContract = {
+    // naive watcher creation TBD
+    tbdNaive(): WatcherNaiveFSContract,
+    // creation of filtered watchers?
+} & DiscoverFSContract;
+
+// Write (new files)
+// Limited contract, acts as helper type for contract fulfillment
+type WriteNaiveFSContract = () => unknown;
+
+// Write and discover files
+type WriteFSContract = {
+    write(): unknown,
+    tbdNaive(): WriteNaiveFSContract,
+} & DiscoverFSContract;
+
+// Delete and discover files
+type DeleteFSContract = {
+    delete(): unknown,
+} & DiscoverFSContract;

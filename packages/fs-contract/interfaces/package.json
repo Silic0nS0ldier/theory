@@ -1,0 +1,24 @@
+{
+    "name": "@theory/util-result",
+    "version": "0.1.0",
+    "description": "Function result utils.",
+    "type": "module",
+    "exports": "./dist/main.js",
+    "types": "./dist/main.d.ts",
+    "scripts": {
+      "build": "tbt build",
+      "test": "echo \"Not implemented\""
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@theory/build-tools": "workspace:*",
+      "ava": "^4.0.0-alpha.2"
+    },
+    "ava": {
+      "files": [
+        "dist/**/*.test.js"
+      ]
+    }
+  }
+  
