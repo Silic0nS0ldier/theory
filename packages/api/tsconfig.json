@@ -1,5 +1,5 @@
 {
-    "extends": "@theory/build-tools/tsconfig.json",
+    "extends": "@theory/build-tools/tsconfig.base.json",
     "compilerOptions": {
         "outDir": "./dist/"
     },

@@ -8,6 +8,7 @@
         "sourceMap": true,
         "importHelpers": false,
         "strict": true,
+        //"moduleResolution": "node12",
         "moduleResolution": "node",
         "declaration": true,
         "noUncheckedIndexedAccess": true

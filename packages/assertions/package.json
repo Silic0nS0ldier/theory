@@ -7,7 +7,7 @@
   "types": "./dist/main.d.ts",
   "scripts": {
     "build": "tbt build",
-    "test": "ava"
+    "test": "echo \"Tests not implemented\""
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@theory/build-tools": "workspace:*",
-    "ava": "^3.15.0"
+    "ava": "^4.0.0-alpha.2"
   },
   "ava": {
     "files": [

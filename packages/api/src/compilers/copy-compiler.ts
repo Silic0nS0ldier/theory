@@ -18,6 +18,6 @@ export function createCopyCompiler(paths: RenameItem[], { fs }: Services): Compi
             await fs.copy(path, outputDir);
         }
 
-        return ok();
+        return ok(undefined);
     };
 }
