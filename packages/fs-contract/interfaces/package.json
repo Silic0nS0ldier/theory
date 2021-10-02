@@ -1,5 +1,5 @@
 {
-    "name": "@theory/util-result",
+    "name": "@theory/fs-contract",
     "version": "0.1.0",
     "description": "Function result utils.",
     "type": "module",
@@ -11,6 +11,10 @@
     },
     "author": "",
     "license": "ISC",
+    "dependencies": {
+      "@theory/util-result": "workspace:*",
+      "@theory/fs-path": "workspace:*"
+    },
     "devDependencies": {
       "@theory/build-tools": "workspace:*",
       "ava": "^4.0.0-alpha.2"

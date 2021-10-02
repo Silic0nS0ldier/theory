@@ -86,7 +86,12 @@ importers:
   packages/fs-contract/interfaces:
     specifiers:
       '@theory/build-tools': workspace:*
+      '@theory/fs-path': workspace:*
+      '@theory/util-result': workspace:*
       ava: ^4.0.0-alpha.2
+    dependencies:
+      '@theory/fs-path': link:../../fs-path
+      '@theory/util-result': link:../../result
     devDependencies:
       '@theory/build-tools': link:../../build-tools
       ava: 4.0.0-alpha.2

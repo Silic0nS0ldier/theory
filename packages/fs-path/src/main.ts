@@ -29,15 +29,15 @@ export type Segment = {
 };
 
 export function absoluteFileFromString(path: string): Result<AbsoluteFile, unknown> {
-
+    throw '';
 }
 
 export function absoluteDirFromString(path: string): AbsoluteDir {
-
+    throw '';
 }
 
 export function segmentFromString(segment: string): Segment {
-
+    throw '';
 }
 
 function parsePath(rawPath: string): Result<URL, unknown> {

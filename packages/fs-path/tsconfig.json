@@ -4,6 +4,7 @@
         "outDir": "./dist/",
         "lib": [
             // Needed for URL class
+            "ES2020",
             "DOM"
         ]
     },
