@@ -1,0 +1,13 @@
+{
+    "extends": "@theory/build-tools/tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "lib": [
+            // Needed for URL class
+            "DOM"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

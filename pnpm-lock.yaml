@@ -91,6 +91,17 @@ importers:
       '@theory/build-tools': link:../../build-tools
       ava: 4.0.0-alpha.2
 
+  packages/fs-path:
+    specifiers:
+      '@theory/build-tools': workspace:*
+      '@theory/util-result': workspace:*
+      ava: ^4.0.0-alpha.2
+    dependencies:
+      '@theory/util-result': link:../result
+    devDependencies:
+      '@theory/build-tools': link:../build-tools
+      ava: 4.0.0-alpha.2
+
   packages/result:
     specifiers:
       '@theory/build-tools': workspace:*
