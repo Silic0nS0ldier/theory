@@ -1,3 +1,4 @@
+import { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
 import { DiscoverContract } from "./discover.js";
 
@@ -6,5 +7,6 @@ import { DiscoverContract } from "./discover.js";
  * Implicitly includes discover contract.
  */
 export type ReadContract = {
-    read(path: Path.AbsoluteFile): unknown,
+    readAsStream(path: Path.AbsoluteFile): Result<ReadableStream, unknown>,
+    readAsString(path: Path.AbsoluteFile): Result<string, unknown>,
 } & DiscoverContract;

@@ -8,7 +8,7 @@ import { DeleteContract } from "./delete.js";
  * Implicitly includes discover contract.
  */
 export type WriteNewContract = {
-    writeNew(path: Path.AbsoluteFile, ): Result<unknown, unknown>,
+    writeNew(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>,
 } & DiscoverContract;
 
 /**
@@ -16,5 +16,5 @@ export type WriteNewContract = {
  * Implicitly includes discover and delete contracts.
  */
 export type WriteForceContract = {
-    writeForce(path: Path.AbsoluteFile, ): Result<unknown, unknown>
+    writeForce(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>
 } & DiscoverContract & DeleteContract;

@@ -13,6 +13,5 @@ Goals include;
 
 ## TODO
 
-* Determine read/write API surface. Keeping memory usage low and performance high is a priority. Investigation of existing FS APIs is necessary.
 * Create basic error types for common problems (too long path, blocked by permissions, out of space).
 * Copy/move API surface, and how to discourage/prevent work arounds with read/write/delete API surfaces.
