@@ -11,7 +11,8 @@ Goals include;
 * Decoupling libraries from runtime specific FS API implementations.
 * Avoiding common pitfalls associated with string paths via dedicated primatives.
 
+Some contract slices implicitly include additional capabilities to prevent misuse (e.g. overwrite capability comes with delete, read includes discovery).
+
 ## TODO
 
 * Create basic error types for common problems (too long path, blocked by permissions, out of space).
-* Copy/move API surface, and how to discourage/prevent work arounds with read/write/delete API surfaces.
