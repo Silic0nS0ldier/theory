@@ -1,18 +1,20 @@
-import { DeleteContract } from "./delete.js";
-import { DiscoverContract } from "./discover";
-import { ModifyContract } from "./modify.js";
-import { ReadContract } from "./read.js";
-import { WatchContract } from "./watch.js";
-import { WriteForceContract, WriteNewContract } from "./write.js";
+import { Copy } from "./copy.js";
+import { Delete } from "./delete.js";
+import { Discover } from "./discover";
+import { Move } from "./move.js";
+import { Read } from "./read.js";
+import { Watch } from "./watch.js";
+import { Write, WriteNew } from "./write.js";
 
 /**
  * The full FS contract.
  */
-export type FullContract =
-    & DeleteContract
-    & DiscoverContract
-    & ModifyContract
-    & ReadContract
-    & WatchContract
-    & WriteNewContract
-    & WriteForceContract;
+export type Full =
+    & Copy
+    & Delete
+    & Discover
+    & Move
+    & Read
+    & Watch
+    & Write
+    & WriteNew;

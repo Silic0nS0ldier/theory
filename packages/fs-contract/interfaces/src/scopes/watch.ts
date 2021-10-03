@@ -1,12 +1,12 @@
 import { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
-import { DiscoverContract } from "./discover.js";
+import { Discover } from "./discover.js";
 
 /**
  * Watch for changes.
  * Implicitly includes discover contract.
  */
-export type WatchContract = {
+export type Watch = {
     /**
      * Watch a given directory or file.
      * @param path Directory or file to watch.
@@ -15,11 +15,11 @@ export type WatchContract = {
     watch(
         path: Path.AbsoluteDir|Path.AbsoluteFile,
         handler: (events: AsyncIterator<unknown, unknown, unknown>,
-    ) => Promise<unknown>): Result<WatchControllerContract, unknown>,
-} & DiscoverContract;
+    ) => Promise<unknown>): Result<WatchController, unknown>,
+} & Discover;
 
 // Active watcher
-type WatchControllerContract = {
+type WatchController = {
     // TODO Can watchers be paused? Perf considerations?
     stop(): unknown,
 };

@@ -1,22 +1,22 @@
 import { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
-import { DiscoverContract } from "./discover.js";
-import { DeleteContract } from "./delete.js";
-import { CopyContract } from "./copy.js";
-import { MoveContract } from "./move.js";
+import { Discover } from "./discover.js";
+import { Delete } from "./delete.js";
+import { Copy } from "./copy.js";
+import { Move } from "./move.js";
 
 /**
  * Write new files.
  * Implicitly includes discover contract.
  */
-export type WriteNewContract = {
+export type WriteNew = {
     writeNew(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>,
-} & DiscoverContract;
+} & Discover;
 
 /**
- * Write to files, overwriting if they already exist.
+ * Write to files.
  * Implicitly includes discover, delete, copy, and move contracts.
  */
-export type WriteForceContract = {
+export type Write = {
     writeForce(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>
-} & DiscoverContract & DeleteContract & CopyContract & MoveContract;
+} & WriteNew & Discover & Delete & Copy & Move;

@@ -1,19 +1,19 @@
 import { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
-import { DiscoverContract } from "./discover.js";
+import { Discover } from "./discover.js";
 
 /**
  * Read files.
  * Implicitly includes discover contract.
  */
-export type ReadContract = {
-    read(path: Path.AbsoluteFile): Result<ReadToContract, unknown>,
-} & DiscoverContract;
+export type Read = {
+    read(path: Path.AbsoluteFile): Result<ReadAs, unknown>,
+} & Discover;
 
 /**
  * Encapsulates ways a file can be read.
  */
-export type ReadToContract = {
+export type ReadAs = {
     stream(): ReadableStream,
     string(): string,
 };
