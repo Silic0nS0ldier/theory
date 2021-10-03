@@ -5,9 +5,15 @@ import { DiscoverContract } from "./discover.js";
 /**
  * Read files.
  * Implicitly includes discover contract.
- * @todo Should we have a single `read()` call which returns an object with `toString` and `toStream` methods?
  */
 export type ReadContract = {
-    readAsStream(path: Path.AbsoluteFile): Result<ReadableStream, unknown>,
-    readAsString(path: Path.AbsoluteFile): Result<string, unknown>,
+    read(path: Path.AbsoluteFile): Result<ReadToContract, unknown>,
 } & DiscoverContract;
+
+/**
+ * Encapsulates ways a file can be read.
+ */
+export type ReadToContract = {
+    stream(): ReadableStream,
+    string(): string,
+};
