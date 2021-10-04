@@ -1,4 +1,3 @@
-import { FileSystemContract } from "./contracts/fs.js";
 import { err, ok, Result } from "@theory/util-result";
 import { createContext } from "context";
 import { AssertionReportContract } from "./contracts/assertion-report.js";
@@ -6,7 +5,7 @@ import { AssertionReportContract } from "./contracts/assertion-report.js";
 const testContextStore = createContext<TextContext>();
 
 type TextContext = {
-    fs: FileSystemContract,
+    fs: unknown,
     report: AssertionReportContract,
 };
 

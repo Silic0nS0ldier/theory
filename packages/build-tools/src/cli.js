@@ -4,6 +4,7 @@ import url from "node:url";
 import { argv } from "node:process";
 
 const command = argv[2];
+const distDir = "./dist";
 
 switch (command) {
     case "build": {
@@ -23,17 +24,23 @@ function build() {
     clean();
     
     console.log("Building...");
-    execa.sync("tsc", [], {
-        preferLocal: true,
-        localDir: url.fileURLToPath(import.meta.url),
-        buffer: false,
-        stdio: "inherit",
-    });
+    execa.sync(
+        "tsc",
+        [
+        "--outDir", distDir,
+        ],
+        {
+            preferLocal: true,
+            localDir: url.fileURLToPath(import.meta.url),
+            buffer: false,
+            stdio: "inherit",
+        },
+    );
 }
 
 function clean() {
     console.log("Cleaning...");
-    del.sync("./dist");
+    del.sync(distDir);
 }
 
 function help() {

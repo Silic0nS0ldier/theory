@@ -1,4 +1,3 @@
-import type { Path } from "@theory/core";
 import type { Result } from "@theory/util-result";
 
 /** @todo */
@@ -12,4 +11,4 @@ export class CompilerError {
  * @param entrypoints Matched test files which are to be processed.
  * @param outputDir Output directory where compiled source should be deposited. This is a directory managed by Theory.
  */
-export type CompilerContract = (entrypoints: Path[], outputDir: Path) => Promise<Result<void, CompilerError>>;
+export type CompilerContract = (entrypoints: unknown[], outputDir: unknown) => Promise<Result<void, CompilerError>>;
