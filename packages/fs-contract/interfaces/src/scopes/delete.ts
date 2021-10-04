@@ -7,5 +7,5 @@ import { Discover } from "./discover.js";
  * Implicitly includes discover contract.
  */
 export type Delete = {
-    delete(path: Path.AbsoluteDir|Path.AbsoluteFile): Result<unknown, unknown>,
+    delete(path: Path.AbsoluteDir|Path.AbsoluteFile): Promise<Result<void, unknown>>,
 } & Discover;

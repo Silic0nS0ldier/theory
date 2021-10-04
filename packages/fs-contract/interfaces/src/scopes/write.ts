@@ -10,7 +10,7 @@ import { Move } from "./move.js";
  * Implicitly includes discover contract.
  */
 export type WriteNew = {
-    writeNew(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>,
+    writeNew(path: Path.AbsoluteFile, content: WritableStream|string): Promise<Result<void, unknown>>,
 } & Discover;
 
 /**
@@ -18,5 +18,5 @@ export type WriteNew = {
  * Implicitly includes discover, delete, copy, and move contracts.
  */
 export type Write = {
-    writeForce(path: Path.AbsoluteFile, content: WritableStream|string): Result<unknown, unknown>
+    writeForce(path: Path.AbsoluteFile, content: WritableStream|string): Promise<Result<void, unknown>>,
 } & WriteNew & Discover & Delete & Copy & Move;

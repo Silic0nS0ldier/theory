@@ -5,5 +5,6 @@ import { Result } from "@theory/util-result";
  * Contract for discovery of file system resources.
  */
 export type Discover = {
-    list(path: Path.AbsoluteDir): Result<unknown[], unknown>,
+    // Should returned paths be Path.Absolute*?
+    list(path: Path.AbsoluteDir): Promise<Result<unknown[], unknown>>,
 };

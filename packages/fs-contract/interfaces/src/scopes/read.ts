@@ -14,6 +14,6 @@ export type Read = {
  * Encapsulates ways a file can be read.
  */
 export type ReadAs = {
-    stream(): Result<ReadableStream, unknown>,
-    string(): Result<string, unknown>,
+    stream(): Promise<Result<ReadableStream, unknown>>,
+    string(): Promise<Result<string, unknown>>,
 };

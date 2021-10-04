@@ -7,6 +7,6 @@ import { Discover } from "./discover.js";
  * Implicitly includes discover contract.
  */
 export type Copy = {
-    copyFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): Result<unknown, unknown>,
-    copyDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): Result<unknown, unknown>,
+    copyFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): Promise<Result<void, unknown>>,
+    copyDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): Promise<Result<void, unknown>>,
 } & Discover;

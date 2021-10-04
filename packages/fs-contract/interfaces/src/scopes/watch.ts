@@ -17,7 +17,7 @@ export type Watch = {
     watch(
         path: Path.AbsoluteDir|Path.AbsoluteFile,
         handler: (events: AsyncIterator<unknown, unknown, unknown>,
-    ) => Promise<unknown>): Result<WatchController, unknown>,
+    ) => Promise<unknown>): Promise<Result<WatchController, unknown>>,
 } & Discover;
 
 // Active watcher

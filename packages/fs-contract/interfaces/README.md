@@ -13,6 +13,8 @@ Goals include;
 
 Some contract slices implicitly include additional capabilities to prevent misuse (e.g. overwrite capability comes with delete, read includes discovery).
 
+Unlike the NodeJS FS APIs, most interactions lack a synchronous counterpart. This maximises compatibility (e.g. browser support) and avoids blocking threads.
+
 ## TODO
 
 * Create basic error types for common problems (too long path, blocked by permissions, out of space).

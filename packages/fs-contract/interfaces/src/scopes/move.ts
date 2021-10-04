@@ -7,6 +7,6 @@ import { Discover } from "./discover";
  * Implicitly includes discover contract.
  */
 export type Move = {
-    moveFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): Result<unknown, unknown>,
-    moveDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): Result<unknown, unknown>,
+    moveFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): Promise<Result<void, unknown>>,
+    moveDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): Promise<Result<void, unknown>>,
 } & Discover;
