@@ -1,4 +1,5 @@
 import * as Path from "@theory/fs-path";
+import { Result } from "@theory/util-result";
 import { Discover } from "./discover.js";
 
 /**
@@ -6,6 +7,6 @@ import { Discover } from "./discover.js";
  * Implicitly includes discover contract.
  */
 export type Copy = {
-    copyFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): unknown,
-    copyDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): unknown,
+    copyFile(from: Path.AbsoluteFile, to: Path.AbsoluteFile): Result<unknown, unknown>,
+    copyDir(from: Path.AbsoluteDir, to: Path.AbsoluteDir): Result<unknown, unknown>,
 } & Discover;

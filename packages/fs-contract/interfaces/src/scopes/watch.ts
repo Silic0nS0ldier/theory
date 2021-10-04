@@ -11,6 +11,8 @@ export type Watch = {
      * Watch a given directory or file.
      * @param path Directory or file to watch.
      * @param handler Handler for watcher. This is called once, and controls watcher lifetime.
+     * @todo Recursion? When would we want to listen only to the top level vs. specific files?
+     * @todo Multiple paths. How well does this map to existing API, would such functionality to too high level?
      */
     watch(
         path: Path.AbsoluteDir|Path.AbsoluteFile,
@@ -20,6 +22,5 @@ export type Watch = {
 
 // Active watcher
 type WatchController = {
-    // TODO Can watchers be paused? Perf considerations?
-    stop(): unknown,
+    stop(): Promise<void>,
 };
