@@ -96,17 +96,30 @@ importers:
       '@theory/build-tools': link:../../build-tools
       ava: 4.0.0-alpha.2
 
-  packages/fs-contract/node:
+  packages/fs-contract/mock:
     specifiers:
       '@theory/build-tools': workspace:*
       '@theory/fs-contract': workspace:*
-      '@theory/fs-path': workspace:*
       '@theory/util-result': workspace:*
       '@types/node': ^16.10.3
       ava: ^4.0.0-alpha.2
     dependencies:
       '@theory/fs-contract': link:../interfaces
-      '@theory/fs-path': link:../../fs-path
+      '@theory/util-result': link:../../result
+    devDependencies:
+      '@theory/build-tools': link:../../build-tools
+      '@types/node': 16.10.3
+      ava: 4.0.0-alpha.2
+
+  packages/fs-contract/node:
+    specifiers:
+      '@theory/build-tools': workspace:*
+      '@theory/fs-contract': workspace:*
+      '@theory/util-result': workspace:*
+      '@types/node': ^16.10.3
+      ava: ^4.0.0-alpha.2
+    dependencies:
+      '@theory/fs-contract': link:../interfaces
       '@theory/util-result': link:../../result
     devDependencies:
       '@theory/build-tools': link:../../build-tools

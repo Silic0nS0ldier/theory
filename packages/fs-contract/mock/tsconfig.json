@@ -1,0 +1,12 @@
+{
+    "extends": "@theory/build-tools/tsconfig.base.json",
+    "compilerOptions": {
+        "lib": [
+            // Needed for File
+            "DOM"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

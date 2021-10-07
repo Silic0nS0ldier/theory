@@ -1,7 +1,7 @@
 {
-    "name": "@theory/fs-contract-node",
+    "name": "@theory/fs-contract-mock",
     "version": "0.1.0",
-    "description": "FS contract implementation for NodeJS.",
+    "description": "FS contract mock.",
     "type": "module",
     "exports": "./dist/main.js",
     "types": "./dist/main.d.ts",
