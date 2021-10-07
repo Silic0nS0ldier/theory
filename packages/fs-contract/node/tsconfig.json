@@ -1,7 +1,11 @@
 {
     "extends": "@theory/build-tools/tsconfig.base.json",
     "compilerOptions": {
-        "module": "node12"
+        "module": "node12",
+        "lib": [
+            // Needed for File
+            "DOM"
+        ]
     },
     "include": [
         "./src/**/*"

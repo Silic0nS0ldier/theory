@@ -1,18 +1,20 @@
 import { getTestContext } from "@theory/core";
 import { is } from "./is.js";
 
-export const enum TypeNames {
-    OBJECT = "object",
-    FUNCTION = "function",
-};
+const objectType = Symbol("object");
+const functionType = Symbol("function");
+type ValueType =
+    | typeof objectType
+    | typeof functionType
+;
 
 type TypeObject = {
-    type: TypeNames.OBJECT,
+    type: typeof objectType,
     properties?: Properties,
 };
 
 type TypeFunction = {
-    type: TypeNames.FUNCTION,
+    type: typeof functionType,
     properties?: Properties,
     // TODO Newable check, although hard to check for
 };
@@ -25,11 +27,13 @@ type Properties = Record<string, Spec>;
  * @todo Map
  * "Class definition" is a function, "class instance" is an object
  */
-export type Spec = TypeObject
-    |TypeFunction
-    |number
-    |boolean
-    |string;
+export type Spec =
+    | TypeObject
+    | TypeFunction
+    | number
+    | boolean
+    | string
+;
 
 /**
  * Asserts that actual conforms to a spec.
@@ -42,9 +46,9 @@ export function conforms(spec: Spec, actual: unknown): boolean {
 
     if (typeof spec === "object") {
         switch (spec.type) {
-            case TypeNames.OBJECT:
+            case objectType:
                 return objectConforms(spec, actual);
-            case TypeNames.FUNCTION:
+            case functionType:
                 return functionConforms(spec, actual);
             default:
                 // TODO Report error

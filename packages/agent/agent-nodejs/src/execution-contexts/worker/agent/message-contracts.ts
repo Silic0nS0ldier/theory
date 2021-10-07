@@ -1,16 +1,16 @@
-export const enum AgentMessageTypes {
+export const AgentMessageTypes = {
     /** Agent ready */
-    READY = "ready",
+    READY: "ready",
     /** Acknowledge message handled */
-    ACK = "ack",
-};
+    ACK: "ack",
+} as const;
 
 type AgentReadyMessage = {
-    readonly type: AgentMessageTypes.READY,
+    readonly type: typeof AgentMessageTypes.READY,
 };
 
 type AgentAckMessage = {
-    readonly type: AgentMessageTypes.ACK,
+    readonly type: typeof AgentMessageTypes.ACK,
 };
 
 export type AgentMessages =

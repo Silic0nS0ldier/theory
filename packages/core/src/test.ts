@@ -9,11 +9,11 @@ type TextContext = {
     report: AssertionReportContract,
 };
 
-const enum GetTestContextErrorTypes {
-    NO_CONTEXT = "NO_CONTEXT",
-};
+const GetTestContextErrorTypes = {
+    NO_CONTEXT: "NO_CONTEXT",
+} as const;
 type NoContextError = {
-    readonly type: GetTestContextErrorTypes.NO_CONTEXT,
+    readonly type: typeof GetTestContextErrorTypes.NO_CONTEXT,
 };
 type GetTestContextErrors =
     | NoContextError;

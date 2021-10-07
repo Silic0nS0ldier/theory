@@ -51,11 +51,11 @@ importers:
     specifiers:
       del: ^6.0.0
       execa: ^5.1.1
-      typescript: ^4.4.3
+      typescript: ^4.5.0-beta
     dependencies:
       del: 6.0.0
       execa: 5.1.1
-      typescript: 4.4.3
+      typescript: 4.5.0-dev.20211003
 
   packages/cli:
     specifiers:
@@ -94,6 +94,23 @@ importers:
       '@theory/util-result': link:../../result
     devDependencies:
       '@theory/build-tools': link:../../build-tools
+      ava: 4.0.0-alpha.2
+
+  packages/fs-contract/node:
+    specifiers:
+      '@theory/build-tools': workspace:*
+      '@theory/fs-contract': workspace:*
+      '@theory/fs-path': workspace:*
+      '@theory/util-result': workspace:*
+      '@types/node': ^16.10.3
+      ava: ^4.0.0-alpha.2
+    dependencies:
+      '@theory/fs-contract': link:../interfaces
+      '@theory/fs-path': link:../../fs-path
+      '@theory/util-result': link:../../result
+    devDependencies:
+      '@theory/build-tools': link:../../build-tools
+      '@types/node': 16.10.3
       ava: 4.0.0-alpha.2
 
   packages/fs-path:
@@ -182,6 +199,10 @@ packages:
 
   /@types/node/16.10.1:
     resolution: {integrity: sha512-4/Z9DMPKFexZj/Gn3LylFgamNKHm4K3QDi0gz9B26Uk0c8izYf97B5fxfpspMNkWlFupblKM/nV8+NA9Ffvr+w==}
+    dev: true
+
+  /@types/node/16.10.3:
+    resolution: {integrity: sha512-ho3Ruq+fFnBrZhUYI46n/bV2GjwzSkwuT4dTf0GkuNFmnb8nq4ny2z9JEVemFi6bdEJanHLlYfy9c6FN9B9McQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1900,8 +1921,8 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript/4.4.3:
-    resolution: {integrity: sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==}
+  /typescript/4.5.0-dev.20211003:
+    resolution: {integrity: sha512-pZ7WSjQ3YJZr69iiehqHzkLuzKrDbjLWAP8+8nAO+qmAA6iy9fFzTnFjL4FXtqwcNk05fIFYr9nkefcNtQjdcA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: false

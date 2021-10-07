@@ -7,13 +7,5 @@ import { Discover } from "./discover.js";
  * Implicitly includes discover contract.
  */
 export type Read = {
-    read(path: Path.AbsoluteFile): ReadAs,
+    read(path: Path.AbsoluteFile): Promise<Result<File, unknown>>,
 } & Discover;
-
-/**
- * Encapsulates ways a file can be read.
- */
-export type ReadAs = {
-    stream(): Promise<Result<ReadableStream, unknown>>,
-    string(): Promise<Result<string, unknown>>,
-};

@@ -18,3 +18,11 @@ pnpm build -r
 # Run tests
 pnpm test -r
 ```
+
+## Code Guidelines
+
+As a general rule, TypeScript should be relegated to type validation only.
+
+1. Don't use `const enum`. To prevents isolated module compilation and complicates usage in JavaScript projects.
+2. Don't use `enum`. More simple code can be created using alternative constructs.
+3. Avoid keying type narrowing with strings and numbers, use `Symbol` instead.
