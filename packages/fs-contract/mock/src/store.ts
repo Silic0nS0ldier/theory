@@ -1,9 +1,6 @@
-import { Read } from "@theory/fs-contract";
-import { err } from "@theory/util-result";
+type Directory = Map<string, Directory|File>;
 
-// Store for mocked FS
-export function createRead(store: unknown): Read['read'] {
-    return async function read(path) {
-        return err("not implemented");
-    }
+export function createStore() {
+    // top level is / (but what about Windows?)
+    const store: Directory = new Map();
 }
