@@ -18,4 +18,4 @@ Unlike the NodeJS FS APIs, most interactions lack a synchronous counterpart. Thi
 ## TODO
 
 * Create basic error types for common problems (too long path, blocked by permissions, out of space).
-* Create separate contracts for interactions which are not universally applicable or supported (e.g. watching and permissions).
+* Create separate contracts for interactions which are not universally applicable or supported (e.g. watching).

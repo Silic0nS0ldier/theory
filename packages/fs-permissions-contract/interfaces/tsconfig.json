@@ -1,0 +1,14 @@
+{
+    "extends": "@theory/build-tools/tsconfig.base.json",
+    "compilerOptions": {
+        "lib": [
+            // Needed for URL class
+            "ES2020",
+            // Needed for File and some others
+            "DOM"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
