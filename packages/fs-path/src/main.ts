@@ -13,46 +13,63 @@ export type RelativeFile = {
 export type AbsoluteDir = {
     toAbsoluteDirURI(): string,
     withRelative(from: AbsoluteDir): RelativeDir,
-    withFile(filename: Segment): AbsoluteFile,
+    withFile(filename: string): AbsoluteFile,// filename validity check
 };
 export type RelativeDir = {
     toRelativeDirURI(): string,
     withAbsolute(to: AbsoluteDir): AbsoluteDir,
-    withFile(filename: Segment): RelativeFile,
+    withFile(filename: string): RelativeFile,// filename validity check
 };
-export type Segment = {
 
+const invalidProtocolError = Symbol("invalid-protocol");
+const expectedAbsolutePathError = Symbol("expected-absolute-path");
+const expectedRelativePathError = Symbol("expected-relative-path");
+type Errors =
+    | typeof invalidProtocolError
+    | typeof expectedAbsolutePathError
+    | typeof expectedRelativePathError
+;
+
+type InvalidProtocolError = {
+    type: typeof invalidProtocolError,
+};
+
+type ExpectedAbsolutePathError = {
+    type: typeof expectedAbsolutePathError,
+};
+
+type ExpectedRelativePathError = {
+    type: typeof expectedRelativePathError,
 };
 
 /**
- * Creates an absolute file path instance from a string.
- * Error result will be returned if path ends in a directory seperator.
+ * Creates an absolute file path instance.
  * @param path Absolute path of file.
  */
-export function absoluteFileFromString(path: string): Result<AbsoluteFile, unknown> {
+export function absoluteFile(path: string|URL): Result<AbsoluteFile, InvalidProtocolError|ExpectedAbsolutePathError> {
     throw '';
 }
 
-export function relativeFileFromString(path: string): Result<AbsoluteFile, unknown> {
+/**
+ * Creates relative file path instance.
+ * @param path Relative path of file.
+ */
+export function relativeFile(path: string): Result<RelativeFile, ExpectedRelativePathError> {
     throw '';
 }
 
-export function absoluteDirFromString(path: string): AbsoluteDir {
+/**
+ * Creates absolute directory path instance.
+ * @param path Absolute path of directory.
+ */
+export function absoluteDir(path: string|URL): Result<AbsoluteDir, InvalidProtocolError|ExpectedAbsolutePathError> {
     throw '';
 }
 
-export function relativeDirFromString(path: string): AbsoluteDir {
+/**
+ * Creates relative directory path instance.
+ * @param path Relative path of directory.
+ */
+export function relativeDir(path: string): Result<RelativeDir, ExpectedRelativePathError> {
     throw '';
-}
-
-export function segmentFromString(segment: string): Segment {
-    throw '';
-}
-
-function parsePath(rawPath: string): Result<URL, unknown> {
-    try {
-        return ok(new URL(rawPath));
-    } catch (e) {
-        return err(e);
-    }
 }

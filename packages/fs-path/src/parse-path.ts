@@ -4,7 +4,7 @@ import { err, ok, Result } from "@theory/util-result";
  * Attempts to parse a given path into a URL instance prefixed with the `file://` scheme.
  * @param path Path to parse into URL.
  */
-export function parsePath(path: string): Result<URL, unknown> {
+export function parsePath(path: string|URL): Result<URL, unknown> {
     let url: URL;
     try {
         url = new URL(path);
