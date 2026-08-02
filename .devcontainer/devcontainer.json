@@ -1,0 +1,22 @@
+{
+    "name": "Theory",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
+    "containerEnv": {
+        // Let corepack fetch the pinned pnpm release without an interactive prompt.
+        "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
+    },
+    // Node lives under a root-owned prefix, so shims go to the user-writable npm global bin instead.
+    "onCreateCommand": "corepack enable --install-directory \"$(npm prefix -g)/bin\"",
+    "postCreateCommand": "pnpm install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "editorconfig.editorconfig"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+    "remoteUser": "node"
+}
