@@ -1,4 +1,4 @@
-import { Full } from "@theory/fs-contract";
+import type { Full } from "@theory/fs-contract";
 
 type MockFS = {
     contract: Full,

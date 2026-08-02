@@ -1,4 +1,4 @@
-import { Full } from "@theory/fs-contract";
+import type { Full } from "@theory/fs-contract";
 import { copyDir, copyFile } from "./scopes/copy.ts";
 import { read } from "./scopes/read.ts";
 
