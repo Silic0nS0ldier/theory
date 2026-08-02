@@ -1,5 +1,4 @@
-import { getTestContext } from "@theory/core";
-import { is } from "./is.ts";
+import { report } from "./report.ts";
 
 const objectType = Symbol("object");
 const functionType = Symbol("function");
@@ -44,12 +43,20 @@ export type Spec =
 /**
  * Asserts that actual conforms to a spec.
  * Similar to `deepEqual` in purpose, but better equiped to deal with exotic structures.
- * @param spec - A strict spec that the actual must conform to.
  * @param actual
+ * @param spec - A strict spec that the actual must conform to.
  */
-export function conforms(spec: Spec, actual: unknown): boolean {
-    const t = getTestContext();
+export function conforms(actual: unknown, spec: Spec): boolean {
+    return report({
+        assertion: "conforms",
+        passed: specConforms(actual, spec),
+        actual,
+        expected: spec,
+    });
+}
 
+// Recursion is kept off the report so a single `conforms` call yields a single record.
+function specConforms(actual: unknown, spec: Spec): boolean {
     if (typeof spec === "object") {
         switch (spec.type) {
             case objectType:
@@ -63,7 +70,7 @@ export function conforms(spec: Spec, actual: unknown): boolean {
     }
     else {
         // TODO Provide context for error source
-        return is(spec, actual);
+        return Object.is(actual, spec);
     }
 }
 
@@ -121,14 +128,14 @@ function propertiesConform(specProperties: Properties, actual: object): boolean 
     const propertyMap = getPropertyMap(actual);
 
     // Same number of keys
-    if (!is(Object.keys(specProperties).length, propertyMap.size)) {
+    if (Object.keys(specProperties).length !== propertyMap.size) {
         return false;
     }
 
     // Iterate over each and validate conformance
     for (const propertyName in specProperties) {
         if (Object.prototype.hasOwnProperty.call(specProperties, propertyName)) {
-            if (!conforms(specProperties[propertyName] as Spec, (actual as any)[propertyName])) {
+            if (!specConforms((actual as any)[propertyName], specProperties[propertyName] as Spec)) {
                 return false;
             }
         }

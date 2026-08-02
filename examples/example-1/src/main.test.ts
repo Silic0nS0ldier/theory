@@ -1,12 +1,12 @@
-import { fibonacci } from "./main.ts";
 import { is } from "@theory/assertions";
+import { test, title } from "@theory/core";
+import { fibonacci } from "./main.ts";
 
-// wrapper needed for decoration and enabling composability (tag tests so that exports can be filtered)
-function test(testFn: unknown): unknown {
-    return testFn;
-}
-
-// t = execution context (similar to with ava), as `import('context')` cannot work reliably with async code
-export const fib1 = test(t => {
-    is(fibonacci(2), 4);
+// Identity is the module path plus export name, so a title is optional.
+export const fib1 = test(() => {
+    is(fibonacci(2), 1);
 });
+
+export const fib2 = title("Fibonacci of ten")(test(() => {
+    is(fibonacci(10), 55);
+}));

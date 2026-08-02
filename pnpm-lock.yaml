@@ -22,6 +22,9 @@ importers:
       '@theory/assertions':
         specifier: workspace:*
         version: link:../../packages/assertions
+      '@theory/core':
+        specifier: workspace:*
+        version: link:../../packages/core
 
   packages/agent/agent-nodejs:
     dependencies:
@@ -57,6 +60,9 @@ importers:
       '@theory/core':
         specifier: workspace:*
         version: link:../core
+      '@theory/util-result':
+        specifier: workspace:*
+        version: link:../result
     devDependencies:
       '@theory/build-tools':
         specifier: workspace:*

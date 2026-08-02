@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@theory/core": "workspace:*"
+    "@theory/core": "workspace:*",
+    "@theory/util-result": "workspace:*"
   },
   "devDependencies": {
     "@theory/build-tools": "workspace:*",

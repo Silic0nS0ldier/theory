@@ -3,31 +3,24 @@ import test from "node:test";
 import { throws } from "./throws.ts";
 
 test("Promise no throw", async () => {
-    await assert.rejects(
-        () => throws(
-            async () => {},
-        ),
-    );
+    assert.equal(await throws(async () => {}), false);
 });
 
 test("Promise throw", async () => {
-    await throws(async () => {
+    assert.equal(await throws(async () => {
         throw new Error();
-    });
+    }), true);
 });
 
 test("No throw", async () => {
-    await assert.rejects(
-        () => throws(
-            () => {},
-        ),
-    );
+    assert.equal(await throws(() => {}), false);
 });
 
 test("Throw", async () => {
-    await throws(() => {
+    assert.equal(await throws(() => {
         throw new Error();
-    });
+    }), true);
 });
 
 test.todo("thrown error specs");
+
