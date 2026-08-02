@@ -1,0 +1,9 @@
+{
+    // For packages that deliberately bind to Node, such as host adapters and the CLI.
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "types": [
+            "node"
+        ]
+    }
+}

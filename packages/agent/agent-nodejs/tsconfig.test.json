@@ -1,0 +1,6 @@
+{
+    "extends": "@theory/build-tools/tsconfig.test.json",
+    "include": [
+        "./src/**/*"
+    ]
+}

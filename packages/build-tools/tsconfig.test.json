@@ -1,0 +1,11 @@
+{
+    // Tests run under `node --test` whatever the package under test targets, so they are
+    // checked against Node types even when the package itself is runtime neutral. Nothing
+    // is emitted: the runner strips types from `src` directly, and tests are not published.
+    "extends": "./tsconfig.node.json",
+    "compilerOptions": {
+        "noEmit": true,
+        "declaration": false,
+        "sourceMap": false
+    }
+}

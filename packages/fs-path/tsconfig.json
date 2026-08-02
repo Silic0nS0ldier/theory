@@ -1,6 +1,8 @@
 {
     "extends": "@theory/build-tools/tsconfig.base.json",
     "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist",
         "lib": [
             "ES2023",
             "DOM"
@@ -8,5 +10,8 @@
     },
     "include": [
         "./src/**/*"
+    ],
+    "exclude": [
+        "./src/**/*.test.ts"
     ]
 }

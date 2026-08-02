@@ -1,11 +1,14 @@
 import { spawnSync } from "node:child_process";
-import { rmSync } from "node:fs";
+import { existsSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { argv, execPath, exit } from "node:process";
 
 const command = argv[2];
+// Only used for cleaning; the build reads `outDir` from the package's tsconfig so that a
+// bare `tsc` emits to the same place as `tbt build` rather than beside the sources.
 const distDir = "./dist";
+const testConfig = "./tsconfig.test.json";
 
 switch (command) {
     case "build": {
@@ -25,9 +28,19 @@ function build() {
     clean();
 
     console.log("Building...");
+    tsc([]);
+
+    // Tests are excluded from the emitted project, so they need a pass of their own.
+    if (existsSync(testConfig)) {
+        console.log("Checking tests...");
+        tsc(["--project", testConfig]);
+    }
+}
+
+function tsc(args) {
     const { status, error } = spawnSync(
         execPath,
-        [resolveTsc(), "--outDir", distDir],
+        [resolveTsc(), ...args],
         { stdio: "inherit" },
     );
 

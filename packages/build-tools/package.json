@@ -5,7 +5,9 @@
         "tbt": "./src/cli.js"
     },
     "exports": {
-        "./tsconfig.base.json": "./tsconfig.base.json"
+        "./tsconfig.base.json": "./tsconfig.base.json",
+        "./tsconfig.node.json": "./tsconfig.node.json",
+        "./tsconfig.test.json": "./tsconfig.test.json"
     },
     "dependencies": {
         "typescript": "catalog:"
