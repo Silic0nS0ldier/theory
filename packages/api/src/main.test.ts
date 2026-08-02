@@ -1,5 +1,3 @@
-import test from "ava";
+import test from "node:test";
 
-test("stub", t => {
-    t.pass();
-});
+test("stub", () => {});

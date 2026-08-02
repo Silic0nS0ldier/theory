@@ -1,6 +1,6 @@
 import * as Path from "@theory/fs-path";
-import { Result } from "@theory/util-result";
-import { Discover } from "./discover.js";
+import type { Result } from "@theory/util-result";
+import type { Discover } from "./discover.ts";
 
 /**
  * Copy files and folders.

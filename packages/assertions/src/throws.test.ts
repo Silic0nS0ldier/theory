@@ -1,36 +1,33 @@
-import { throws } from "./throws.js";
-import test from "ava";
+import assert from "node:assert/strict";
+import test from "node:test";
+import { throws } from "./throws.ts";
 
-test("Promise no throw", async t => {
-    await t.throwsAsync(
+test("Promise no throw", async () => {
+    await assert.rejects(
         () => throws(
             async () => {},
         ),
     );
 });
 
-test("Promise throw", async t => {
+test("Promise throw", async () => {
     await throws(async () => {
         throw new Error();
     });
-
-    t.pass();
 });
 
-test("No throw", async t => {
-    await t.throwsAsync(
+test("No throw", async () => {
+    await assert.rejects(
         () => throws(
             () => {},
         ),
     );
 });
 
-test("Throw", async t => {
+test("Throw", async () => {
     await throws(() => {
         throw new Error();
     });
-
-    t.pass();
 });
 
 test.todo("thrown error specs");

@@ -16,14 +16,7 @@
       "@theory/fs-contract": "workspace:*"
     },
     "devDependencies": {
-      "@types/node": "^16.10.3",
-      "@theory/build-tools": "workspace:*",
-      "ava": "^4.0.0-alpha.2"
-    },
-    "ava": {
-      "files": [
-        "dist/**/*.test.js"
-      ]
+      "@types/node": "catalog:",
+      "@theory/build-tools": "workspace:*"
     }
   }
-  

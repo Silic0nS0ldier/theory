@@ -1,4 +1,4 @@
-import { err, ok, Result } from "@theory/util-result";
+import { err, ok, type Result } from "@theory/util-result";
 
 /**
  * Attempts to parse a given path into a URL instance prefixed with the `file://` scheme.

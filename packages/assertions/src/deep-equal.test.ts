@@ -1,7 +1,8 @@
-import test from "ava";
-import { deepEqual } from "./deep-equal.js";
+import assert from "node:assert/strict";
+import test from "node:test";
+import { deepEqual } from "./deep-equal.ts";
 
-test("Throws on primative inputs", t => {
-    t.throws(() => deepEqual("foo", {}));
-    t.throws(() => deepEqual({}, "bar"));
+test("Throws on primative inputs", () => {
+    assert.throws(() => deepEqual("foo", {}));
+    assert.throws(() => deepEqual({}, "bar"));
 });

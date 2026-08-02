@@ -1,9 +1,9 @@
-import { Result } from "@theory/util-result";
+import type { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
-import { Discover } from "./discover.js";
-import { Delete } from "./delete.js";
-import { Copy } from "./copy.js";
-import { Move } from "./move.js";
+import type { Discover } from "./discover.ts";
+import type { Delete } from "./delete.ts";
+import type { Copy } from "./copy.ts";
+import type { Move } from "./move.ts";
 
 /**
  * Write new files.

@@ -3,3 +3,7 @@ packages:
   - packages/agent/*
   - packages/fs-contract/*
   - examples/*
+
+catalog:
+  typescript: ^5.9.0
+  "@types/node": ^24.0.0

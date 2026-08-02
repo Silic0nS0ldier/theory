@@ -1,5 +1,5 @@
 import * as Path from "@theory/fs-path";
-import { Result } from "@theory/util-result";
+import type { Result } from "@theory/util-result";
 
 /**
  * Contract for discovery of file system resources.

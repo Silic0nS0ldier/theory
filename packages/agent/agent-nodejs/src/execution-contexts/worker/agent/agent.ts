@@ -1,6 +1,8 @@
 // runs in worker
-/// <reference lib="webworker" />
+import { setAsyncVariableImplementation } from "@theory/core";
+import { AsyncLocalStorageVariable } from "../../../async-context.ts";
+import { sendAgentReady } from "./messages.ts";
 
-import { sendAgentReady } from "./messages.js";
+setAsyncVariableImplementation(AsyncLocalStorageVariable);
 
 sendAgentReady();

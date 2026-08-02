@@ -1,22 +1,23 @@
-import { conforms, Spec, TypeNames } from "./conforms.js";
-import test from "ava";
+import assert from "node:assert/strict";
+import test from "node:test";
+import { conforms, type Spec, TypeNames } from "./conforms.ts";
 
-test("Basic object", t => {
+test("Basic object", () => {
     const spec: Spec = {
         type: TypeNames.OBJECT,
         properties: {
             foo: "bar"
         }
     };
-    t.notThrows(() => {
+    assert.doesNotThrow(() => {
         conforms(spec, { foo: "bar" });
     });
-    t.throws(() => {
+    assert.throws(() => {
         conforms(spec, {});
     });
 });
 
-test("Basic function", t => {
+test("Basic function", () => {
     const spec: Spec = {
         type: TypeNames.FUNCTION,
         properties: {
@@ -24,34 +25,34 @@ test("Basic function", t => {
         }
     };
     function actual() {}
-    t.throws(() => conforms(spec, actual));
+    assert.throws(() => conforms(spec, actual));
     actual.foo = "bar";
-    t.notThrows(() => conforms(spec, actual));
+    assert.doesNotThrow(() => conforms(spec, actual));
 });
 
-test("Number literal", t => {
-    t.notThrows(() => {
+test("Number literal", () => {
+    assert.doesNotThrow(() => {
         conforms(1, 1);
     });
-    t.throws(() => {
+    assert.throws(() => {
         conforms(1, 2);
     });
 });
 
-test("String literal", t => {
-    t.notThrows(() => {
+test("String literal", () => {
+    assert.doesNotThrow(() => {
         conforms("foo", "foo");
     });
-    t.throws(() => {
+    assert.throws(() => {
         conforms("foo", "bar");
     });
 });
 
-test("Boolean literal", t => {
-    t.notThrows(() => {
+test("Boolean literal", () => {
+    assert.doesNotThrow(() => {
         conforms(true, true);
     });
-    t.throws(() => {
+    assert.throws(() => {
         conforms(true, false);
     });
 });

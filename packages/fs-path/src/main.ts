@@ -1,4 +1,4 @@
-import { Result, ok, err } from "@theory/util-result";
+import { type Result, ok, err } from "@theory/util-result";
 
 export type AbsoluteFile = {
     toAbsoluteFileURI(): string,

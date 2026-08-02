@@ -1,5 +1,5 @@
 import { ok } from "@theory/util-result";
-import { CompilerContract, CompilerError } from "../compiler.js";
+import type { CompilerContract, CompilerError } from "../compiler.ts";
 
 type Services = {
     fs: unknown,

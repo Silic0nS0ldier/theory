@@ -1,8 +1,5 @@
 {
     "extends": "@theory/build-tools/tsconfig.base.json",
-    "compilerOptions": {
-        "module": "node12"
-    },
     "include": [
         "./src/**/*"
     ]

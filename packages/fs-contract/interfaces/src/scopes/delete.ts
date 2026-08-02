@@ -1,6 +1,6 @@
-import { Result } from "@theory/util-result";
+import type { Result } from "@theory/util-result";
 import * as Path from "@theory/fs-path";
-import { Discover } from "./discover.js";
+import type { Discover } from "./discover.ts";
 
 /**
  * Delete files.

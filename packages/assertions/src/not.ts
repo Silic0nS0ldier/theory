@@ -1,5 +1,5 @@
 import { getTestContext } from "@theory/core";
-import { is } from "./is.js";
+import { is } from "./is.ts";
 
 /**
  * Asserts inputs are not the same. Logical opposite of `is`.

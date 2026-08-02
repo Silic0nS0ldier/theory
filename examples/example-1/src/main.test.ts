@@ -1,4 +1,4 @@
-import { fibonacci } from "./main.js";
+import { fibonacci } from "./main.ts";
 import { is } from "@theory/assertions";
 
 // wrapper needed for decoration and enabling composability (tag tests so that exports can be filtered)
