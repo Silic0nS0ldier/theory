@@ -3,6 +3,12 @@ packages:
   - packages/agent/*
   - packages/fs-contract/*
   - examples/*
+  - benchmarks/*
+
+# Needed by the benchmark harness: both link a prebuilt native binary during install.
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
 
 catalog:
   typescript: ^7.0.0

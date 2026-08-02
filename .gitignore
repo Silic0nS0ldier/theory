@@ -2,3 +2,9 @@ node_modules
 dist
 # pnpm keeps a project-local store when home and workspace are on different filesystems (devcontainer bind mount).
 .pnpm-store
+# Benchmark scratch space: generated suites, raw coverage dumps and the sandboxed HOME/TMPDIR.
+benchmarks/*/.work
+benchmarks/*/.coverage
+benchmarks/*/.sandbox
+# Reports are only comparable within one runtime and dependency set, so they are regenerated.
+benchmarks/*/results
