@@ -1,2 +1,4 @@
 node_modules
 dist
+# pnpm keeps a project-local store when home and workspace are on different filesystems (devcontainer bind mount).
+.pnpm-store
