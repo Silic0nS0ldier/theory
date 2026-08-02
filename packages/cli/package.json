@@ -12,10 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "@theory/build-tools": "workspace:*",
-    "@theory/util-result": "workspace:*",
-    "ts-command-line-args": "^2.1.0"
+    "@theory/util-result": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^16.10.1"
+    "@types/node": "catalog:"
   }
 }

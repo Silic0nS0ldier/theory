@@ -1,4 +1,4 @@
-import { Copy } from "@theory/fs-contract";
+import type { Copy } from "@theory/fs-contract";
 import { ok } from "@theory/util-result";
 import { promises } from "node:fs";
 

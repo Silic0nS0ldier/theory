@@ -17,12 +17,6 @@
     },
     "devDependencies": {
       "@theory/build-tools": "workspace:*",
-      "ava": "^4.0.0-alpha.2"
-    },
-    "ava": {
-      "files": [
-        "dist/**/*.test.js"
-      ]
+      "@types/node": "catalog:"
     }
   }
-  

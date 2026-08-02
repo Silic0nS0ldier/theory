@@ -1,6 +1,7 @@
+import assert from "node:assert/strict";
+import test from "node:test";
 import { isErr, isOk, unwrap } from "@theory/util-result";
-import test from "ava";
-import { parsePath } from "./parse-path.js";
+import { parsePath } from "./parse-path.ts";
 
 for (const path of [
     { in: "file:///foo/bar", out: "file:///foo/bar" },
@@ -13,12 +14,12 @@ for (const path of [
     // TODO Check spec
     { in: "file://foo.bar/c:foo/bar", out: "file://foo.bar/c:foo/bar" },
 ]) {
-    test(`Absolute path "${path.in}" should normalise to "${path.out}"`, t => {
+    test(`Absolute path "${path.in}" should normalise to "${path.out}"`, () => {
         const parsed = parsePath(path.in);
-        t.true(isOk(parsed));
+        assert.ok(isOk(parsed));
         // TODO Something weird happening with generic type inference here
         if (isOk<URL, unknown>(parsed)) {
-            t.is(unwrap(parsed).toString(), path.out);
+            assert.equal(unwrap(parsed).toString(), path.out);
         }
     });
 }
@@ -26,7 +27,7 @@ for (const path of [
 for (const path of [
     "foo://bar",
 ]) {
-    test(`Bad path "${path}" should fail to parse`, t => {
-        t.true(isErr(parsePath(path)));
+    test(`Bad path "${path}" should fail to parse`, () => {
+        assert.ok(isErr(parsePath(path)));
     });
 }

@@ -1,8 +1,8 @@
-import { err, ok, Result } from "@theory/util-result";
-import { createContext } from "context";
-import { AssertionReportContract } from "./contracts/assertion-report.js";
+import { err, ok, type Result } from "@theory/util-result";
+import { createAsyncVariable } from "./async-context.ts";
+import type { AssertionReportContract } from "./contracts/assertion-report.ts";
 
-const testContextStore = createContext<TextContext>();
+const testContextStore = createAsyncVariable<TextContext>();
 
 type TextContext = {
     fs: unknown,
@@ -23,7 +23,7 @@ type GetTestContextErrors =
  * @returns The test context.
  */
 export function getTestContext(): Result<TextContext, GetTestContextErrors> {
-    const testContext = testContextStore.use();
+    const testContext = testContextStore.get();
 
     if (testContext) {
         return ok(testContext);
@@ -47,5 +47,5 @@ export function bindTestContext(test: TestFn): TestFn {
         report: {},
     };
 
-    return testContextStore.bind(textContext, test);
+    return () => testContextStore.run(textContext, test);
 }

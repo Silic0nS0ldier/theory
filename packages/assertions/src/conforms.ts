@@ -1,8 +1,14 @@
 import { getTestContext } from "@theory/core";
-import { is } from "./is.js";
+import { is } from "./is.ts";
 
 const objectType = Symbol("object");
 const functionType = Symbol("function");
+
+export const TypeNames = {
+    OBJECT: objectType,
+    FUNCTION: functionType,
+} as const;
+
 type ValueType =
     | typeof objectType
     | typeof functionType
@@ -39,7 +45,7 @@ export type Spec =
  * Asserts that actual conforms to a spec.
  * Similar to `deepEqual` in purpose, but better equiped to deal with exotic structures.
  * @param spec - A strict spec that the actual must conform to.
- * @param actual 
+ * @param actual
  */
 export function conforms(spec: Spec, actual: unknown): boolean {
     const t = getTestContext();
@@ -63,15 +69,15 @@ export function conforms(spec: Spec, actual: unknown): boolean {
 
 /**
  * Asserts actual is an object that conforms to the spec.
- * @param spec 
- * @param actual 
+ * @param spec
+ * @param actual
  */
 function objectConforms(spec: TypeObject, actual: unknown): boolean {
     // Ensure object
     if (typeof actual !== "object") {
         return false;
     }
-    
+
     // Ensure value
     if (actual === null) {
         return false;
@@ -83,8 +89,8 @@ function objectConforms(spec: TypeObject, actual: unknown): boolean {
 
 /**
  * Asserts actual is a function that conforms to the spec.
- * @param spec 
- * @param actual 
+ * @param spec
+ * @param actual
  */
 function functionConforms(spec: TypeFunction, actual: unknown): boolean {
     // Ensure function
@@ -98,7 +104,7 @@ function functionConforms(spec: TypeFunction, actual: unknown): boolean {
 
 /**
  * Creates a map from an object (or object like entity) containing its properties.
- * @param actual 
+ * @param actual
  */
 function getPropertyMap(actual: object): Map<string, unknown> {
     const keys = Object.keys(actual);

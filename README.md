@@ -124,8 +124,9 @@ The runtime agnostic approach to this project means a different approach is need
 
 ## Getting Started
 
+Open the repository in VS Code and choose **Reopen in Container**. The dev container provides Node 24 and pnpm, and installs dependencies on create.
+
 ```sh
-pnpm i
-pnpm run build -r
-pnpm run test -r
+pnpm -r build
+pnpm -r test
 ```

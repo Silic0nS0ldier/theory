@@ -2,6 +2,7 @@
     "extends": "@theory/build-tools/tsconfig.base.json",
     "compilerOptions": {
         "lib": [
+            "ES2023",
             // Needed for File
             "DOM"
         ]

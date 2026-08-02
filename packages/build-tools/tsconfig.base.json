@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
-        "target": "es2020",
-        "module": "es2020",
+        "target": "es2023",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
         "lib": [
-            "es2015"
+            "es2023"
         ],
         "sourceMap": true,
         "importHelpers": false,
         "strict": true,
-        "moduleResolution": "node",
         "declaration": true,
         "noUncheckedIndexedAccess": true,
-        "preserveValueImports": true
+        "verbatimModuleSyntax": true,
+        "erasableSyntaxOnly": true,
+        "allowImportingTsExtensions": true,
+        "rewriteRelativeImportExtensions": true
     }
 }

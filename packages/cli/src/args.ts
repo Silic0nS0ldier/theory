@@ -1,5 +1,5 @@
-import { parse } from "ts-command-line-args";
-import { err, ok, Result } from "@theory/util-result";
+import { parseArgs } from "node:util";
+import { err, ok, type Result } from "@theory/util-result";
 
 type GenericError = {};
 
@@ -10,26 +10,28 @@ type Args = {
 
 export function getArgs(argv: string[]): Result<Args, GenericError> {
     try {
-        return ok(parse<Args>({
-            watch: {
-                alias: "w",
-                defaultValue: false,
-                type: Boolean,
+        const { values } = parseArgs({
+            args: argv,
+            options: {
+                watch: {
+                    short: "w",
+                    type: "boolean",
+                    default: false,
+                },
+                help: {
+                    short: "h",
+                    type: "boolean",
+                    default: false,
+                },
             },
-            help: {
-                alias: "h",
-                defaultValue: false,
-                type: Boolean,
-            }
-        }, {
-            argv,
-            // TODO Send to a logger
-            logger: console,
-            // baseCommand: "...",
-            helpArg: "help",
-        }));
+        });
+
+        return ok({
+            watch: values.watch ?? false,
+            help: values.help ?? false,
+        });
     }
-    catch (error) {
+    catch {
         return err({});
     }
 }

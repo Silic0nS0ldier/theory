@@ -7,21 +7,15 @@
     "types": "./dist/main.d.ts",
     "scripts": {
         "build": "tbt build",
-        "test": "ava"
+        "test": "node --test \"src/**/*.test.ts\""
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "@theory/build-tools": "workspace:*",
-        "ava": "^4.0.0-alpha.2"
-    },
-    "ava": {
-        "files": [
-            "dist/**/*.test.js"
-        ]
+        "@types/node": "catalog:"
     },
     "dependencies": {
-        "@theory/util-result": "workspace:*",
-        "context": "file:../context-v1.1.4.tgz"
+        "@theory/util-result": "workspace:*"
     }
 }

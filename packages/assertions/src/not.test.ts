@@ -1,19 +1,20 @@
-import test from "ava";
-import { not } from "./not.js";
+import assert from "node:assert/strict";
+import test from "node:test";
+import { not } from "./not.ts";
 
-test("Value type equal", t => {
-    t.throws(() => not("foo", "foo"));
+test("Value type equal", () => {
+    assert.throws(() => not("foo", "foo"));
 });
 
-test("Reference type equal", t => {
+test("Reference type equal", () => {
     const foo = {};
-    t.throws(() => not(foo, foo));
+    assert.throws(() => not(foo, foo));
 });
 
-test("Value type not equal", t => {
-    t.notThrows(() => not("foo", "bar"));
+test("Value type not equal", () => {
+    assert.doesNotThrow(() => not("foo", "bar"));
 });
 
-test("Reference type not equal", t => {
-    t.notThrows(() => not({}, {}));
+test("Reference type not equal", () => {
+    assert.doesNotThrow(() => not({}, {}));
 });

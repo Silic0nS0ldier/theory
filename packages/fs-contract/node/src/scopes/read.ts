@@ -1,6 +1,6 @@
-import { Read } from "@theory/fs-contract";
+import type { Read } from "@theory/fs-contract";
 import { ok } from "@theory/util-result";
-import { File } from "../ponyfills/file.js";
+import { File } from "../ponyfills/file.ts";
 import { createReadStream } from "node:fs";
 import { blob } from "node:stream/consumers";
 
