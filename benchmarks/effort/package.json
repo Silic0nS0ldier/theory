@@ -1,0 +1,26 @@
+{
+    "name": "@theory/benchmark-effort",
+    "version": "0.1.0",
+    "description": "Deterministic effort benchmarks for Theory against competing test frameworks.",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "bench": "node ./src/cli.ts",
+        "build": "tbt build"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "@theory/agent-nodejs": "workspace:*",
+        "@theory/assertions": "workspace:*",
+        "@theory/core": "workspace:*"
+    },
+    "devDependencies": {
+        "@jest/globals": "30.2.0",
+        "@theory/build-tools": "workspace:*",
+        "@types/node": "catalog:",
+        "ava": "6.4.1",
+        "jest": "30.2.0",
+        "mocha": "11.7.4",
+        "vitest": "3.2.4"
+    }
+}

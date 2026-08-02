@@ -1,0 +1,10 @@
+{
+    "extends": "@theory/build-tools/tsconfig.node.json",
+    "compilerOptions": {
+        "noEmit": true,
+        "rootDir": "./src"
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}
