@@ -1,5 +1,9 @@
 {
-    "extends": "@theory/build-tools/tsconfig.base.json",
+    "extends": "@theory/build-tools/tsconfig.node.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist"
+    },
     "include": [
         "./src/**/*"
     ]
