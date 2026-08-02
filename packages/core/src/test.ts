@@ -1,10 +1,11 @@
 import { err, ok, type Result } from "@theory/util-result";
 import { createAsyncVariable } from "./async-context.ts";
-import type { AssertionReportContract } from "./contracts/assertion-report.ts";
+import type { AssertionRecord, AssertionReportContract } from "./contracts/assertion-report.ts";
+import type { Test } from "./declare.ts";
 
-const testContextStore = createAsyncVariable<TextContext>();
+const testContextStore = createAsyncVariable<TestContext>();
 
-type TextContext = {
+export type TestContext = {
     fs: unknown,
     report: AssertionReportContract,
 };
@@ -22,7 +23,7 @@ type GetTestContextErrors =
  * Gets the context for the current test.
  * @returns The test context.
  */
-export function getTestContext(): Result<TextContext, GetTestContextErrors> {
+export function getTestContext(): Result<TestContext, GetTestContextErrors> {
     const testContext = testContextStore.get();
 
     if (testContext) {
@@ -34,18 +35,32 @@ export function getTestContext(): Result<TextContext, GetTestContextErrors> {
     });
 }
 
-type TestFn = () => Promise<void>|void;
+function createAssertionReport(): AssertionReportContract {
+    const records: AssertionRecord[] = [];
 
-export function bindTestContext(test: TestFn): TestFn {
-    const textContext: TextContext = {
-        fs: {
-            read() { throw new Error("Not implemented"); },
-            write() { throw new Error("Not implemented"); },
-            copy() { throw new Error("Not implemented"); },
-            move() { throw new Error("Not implemented"); },
-        },
-        report: {},
+    return {
+        record: entry => { records.push(entry); },
+        records,
     };
+}
 
-    return () => testContextStore.run(textContext, test);
+/**
+ * Binds a test to a fresh context, yielding the assertions it recorded.
+ */
+export function bindTestContext(subject: Test): () => Promise<readonly AssertionRecord[]> {
+    return async () => {
+        const testContext: TestContext = {
+            fs: {
+                read() { throw new Error("Not implemented"); },
+                write() { throw new Error("Not implemented"); },
+                copy() { throw new Error("Not implemented"); },
+                move() { throw new Error("Not implemented"); },
+            },
+            report: createAssertionReport(),
+        };
+
+        await testContextStore.run(testContext, subject.body);
+
+        return testContext.report.records;
+    };
 }

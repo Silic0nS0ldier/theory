@@ -3,18 +3,18 @@ import test from "node:test";
 import { not } from "./not.ts";
 
 test("Value type equal", () => {
-    assert.throws(() => not("foo", "foo"));
+    assert.equal(not("foo", "foo"), false);
 });
 
 test("Reference type equal", () => {
     const foo = {};
-    assert.throws(() => not(foo, foo));
+    assert.equal(not(foo, foo), false);
 });
 
 test("Value type not equal", () => {
-    assert.doesNotThrow(() => not("foo", "bar"));
+    assert.equal(not("foo", "bar"), true);
 });
 
 test("Reference type not equal", () => {
-    assert.doesNotThrow(() => not({}, {}));
+    assert.equal(not({}, {}), true);
 });

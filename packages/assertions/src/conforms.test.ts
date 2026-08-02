@@ -9,12 +9,8 @@ test("Basic object", () => {
             foo: "bar"
         }
     };
-    assert.doesNotThrow(() => {
-        conforms(spec, { foo: "bar" });
-    });
-    assert.throws(() => {
-        conforms(spec, {});
-    });
+    assert.equal(conforms({ foo: "bar" }, spec), true);
+    assert.equal(conforms({}, spec), false);
 });
 
 test("Basic function", () => {
@@ -25,34 +21,23 @@ test("Basic function", () => {
         }
     };
     function actual() {}
-    assert.throws(() => conforms(spec, actual));
+    assert.equal(conforms(actual, spec), false);
     actual.foo = "bar";
-    assert.doesNotThrow(() => conforms(spec, actual));
+    assert.equal(conforms(actual, spec), true);
 });
 
 test("Number literal", () => {
-    assert.doesNotThrow(() => {
-        conforms(1, 1);
-    });
-    assert.throws(() => {
-        conforms(1, 2);
-    });
+    assert.equal(conforms(1, 1), true);
+    assert.equal(conforms(2, 1), false);
 });
 
+
 test("String literal", () => {
-    assert.doesNotThrow(() => {
-        conforms("foo", "foo");
-    });
-    assert.throws(() => {
-        conforms("foo", "bar");
-    });
+    assert.equal(conforms("foo", "foo"), true);
+    assert.equal(conforms("foo", "bar"), false);
 });
 
 test("Boolean literal", () => {
-    assert.doesNotThrow(() => {
-        conforms(true, true);
-    });
-    assert.throws(() => {
-        conforms(true, false);
-    });
+    assert.equal(conforms(true, true), true);
+    assert.equal(conforms(true, false), false);
 });

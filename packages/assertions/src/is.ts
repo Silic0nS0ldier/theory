@@ -1,18 +1,17 @@
-import { getTestContext } from "@theory/core";
+import { report } from "./report.ts";
 
 /**
  * Asserts that inputs are the same (referentially equal for reference types, identical for value
  * types). Note that when reference types are used, the actual value may be mutated in an
  * traceable manner. Other assertions are necessary to validate behaviour.
- * @param expected 
- * @param actual 
+ * @param actual
+ * @param expected
  */
-export function is(expected: unknown, actual: unknown): boolean {
-    const t = getTestContext();
-
-    if (Object.is(expected, actual)) {
-        return true;
-    }
-
-    return false;
+export function is(actual: unknown, expected: unknown): boolean {
+    return report({
+        assertion: "is",
+        passed: Object.is(actual, expected),
+        actual,
+        expected,
+    });
 }
