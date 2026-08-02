@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es2023",
-        "module": "nodenext",
-        "moduleResolution": "nodenext",
+        "target": "es2025",
+        "module": "node20",
+        "moduleResolution": "node16",
         "lib": [
             "es2023"
         ],
